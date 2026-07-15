@@ -4,22 +4,17 @@ if "%~1"=="" (
     pause
     exit /b 1
 )
-
 echo Staging all changes...
 git add -A
 if errorlevel 1 goto :error
-
 echo Committing...
 git commit -m "%~1"
-
-echo Force-pushing to GitHub (overwrites remote history)...
-git push origin main --force
+echo Pushing to GitHub...
+git push origin main
 if errorlevel 1 goto :error
-
-echo Push complete. GitHub now matches local exactly.
+echo Push complete.
 pause
 exit /b 0
-
 :error
 echo Push failed. See error above.
 pause
