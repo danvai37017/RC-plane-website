@@ -1,0 +1,23 @@
+.featuredSection {
+  background: var(--color-white);
+  padding: var(--section-padding-y) 0;
+}
+
+.featuredInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+}

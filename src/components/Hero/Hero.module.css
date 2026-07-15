@@ -1,0 +1,115 @@
+.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11, 31, 51, 0.82) 0%,
+      rgba(11, 31, 51, 0.65) 35%,
+      rgba(11, 31, 51, 0.15) 100%
+    ),
+    url('https://images.unsplash.com/photo-1469362102473-8622cfb973cd?auto=format&fit=crop&w=1920&q=80')
+      center / cover no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 31, 51, 0.08) 0%,
+    rgba(11, 31, 51, 0.12) 100%
+  );
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 60px var(--container-padding) 60px calc(var(--container-padding) + 100px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
+  align-items: center;
+  gap: 40px;
+}
+
+.textCol {
+  max-width: 580px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(11, 31, 51, 0.4);
+  color: var(--color-blue-400, #60a5fa);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.headline {
+  margin: 0 0 20px;
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0 0 28px;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 430px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.visualCol {
+  min-height: 200px;
+}
+
+@media (max-width: 980px) {
+  .content {
+    grid-template-columns: 1fr;
+    padding-left: var(--container-padding);
+  }
+
+  .textCol {
+    max-width: 100%;
+  }
+
+  .hero {
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    min-height: 500px;
+  }
+
+  .headline {
+    font-size: 2.7rem;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+}
