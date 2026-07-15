@@ -35,10 +35,11 @@ function ArticleSectionRenderer({ section }) {
           case 'p':
             return <p key={i} className={styles.body}>{block.text}</p>
           case 'img':
+          case 'image':
             return (
               <figure key={i} className={styles.figure}>
-                <img src={block.src} alt={block.caption} className={styles.figureImg} />
-                <figcaption className={styles.figcaption}>{block.caption}</figcaption>
+                <img src={block.src} alt={block.caption || 'Article illustration'} className={styles.figureImg} />
+                {block.caption ? <figcaption className={styles.figcaption}>{block.caption}</figcaption> : null}
               </figure>
             )
           case 'code':

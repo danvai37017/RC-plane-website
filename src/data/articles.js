@@ -1,165 +1,199 @@
 export const articleContent = {
-  title: 'Choosing the Right Airfoil',
+  title: 'The Airfoil & Wing Geometry Guide: How to Choose the Right Wing for Your RC Plane',
   category: 'Design',
-  readingTime: '12 min read',
-  difficulty: 'Intermediate',
-  author: 'Ryan Thompson',
-  updated: 'May 2026',
-  breadcrumb: ['Home', 'Design', 'Choosing the Right Airfoil'],
-  sections: [
+  readingTime: 'x min read',
+  difficulty: 'x',
+  author: 'Sidhanth Sridhar',
+  updated: 'July 2026',
+  breadcrumb: ['Home', 'Design', 'The Airfoil & Wing Geometry Guide'],
+  "sections": [
     {
-      id: 'key-takeaways',
-      type: 'takeaways',
-      level: 2,
-      title: 'Key Takeaways',
-      content: [
-        { type: 'bullet', text: 'Airfoil selection determines 80% of your aircraft\'s flight characteristics before the first wing spar is cut.' },
-        { type: 'bullet', text: 'Cambered airfoils generate more lift at lower speeds, making them ideal for trainers and thermal gliders.' },
-        { type: 'bullet', text: 'Symmetric airfoils excel in aerobatic and inverted flight but require higher speeds for takeoff.' },
-        { type: 'bullet', text: 'The Reynolds number at your operating speed dictates whether a thin or thick profile will perform best.' },
-        { type: 'bullet', text: 'Leading-edge radius affects stall behavior — rounder edges stall more gently than sharp ones.' },
-      ],
+      "id": "key-takeaways",
+      "type": "takeaways",
+      "level": 2,
+      "title": "Key Takeaways",
+      "content": [
+        { "type": "bullet", "text": "The airfoil shape determines your plane's core behavior — changing it can transform a twitchy stunt plane into a floaty trainer." },
+        { "type": "bullet", "text": "Flat-bottom airfoils like the Clark Y generate high lift at low speeds and are the easiest to build, making them ideal for beginners." },
+        { "type": "bullet", "text": "Semi-symmetrical airfoils offer the best lift-to-drag ratio, providing excellent glide distance and wind penetration for sport flying." },
+        { "type": "bullet", "text": "Fully symmetrical airfoils produce zero lift at zero angle of attack, delivering neutral handling and identical upright and inverted performance." },
+        { "type": "bullet", "text": "Wing geometry — dihedral, wing placement, and angle of attack management — is just as critical as airfoil choice for overall stability." }
+      ]
     },
     {
-      id: 'introduction',
-      level: 2,
-      title: 'Introduction',
-      content: [
-        { type: 'p', text: 'Every aircraft begins with a wing, and every wing begins with an airfoil. The shape of that cross-section — the airfoil — governs how lift is generated, drag is managed, and stall is approached. For RC enthusiasts, choosing the right airfoil can mean the difference between a trainer that practically flies itself and a sport model that bites when you slow down.' },
-        { type: 'p', text: 'This guide walks through the aerodynamic principles behind airfoil selection, the practical tradeoffs you will face at model scales, and a framework for matching airfoil shape to mission profile. By the end, you will know exactly what to look for when comparing profiles for your next build.' },
-      ],
+      "id": "introduction",
+      "level": 2,
+      "title": "Introduction",
+      "content": [
+        { "type": "p", "text": "When you are building an RC plane, one of the biggest decisions you have to make is picking the shape of your wing. If you look at a standard wing from the side, that teardrop design is known as the airfoil." },
+        { "type": "p", "text": "The airfoil decides your plane's behavior. Changing this single shape can turn a twitchy stunt plane into a floaty trainer or a roll-sensitive aircraft." },
+        { "type": "p", "text": "To help you decide which wing you need for your design, we have analyzed airfoils through wind tunnel simulations to break down their impacts on aircraft behavior, along with the key 3D wing geometries that keep your plane stable in the sky." }
+      ]
     },
     {
-      id: 'airfoil-fundamentals',
-      level: 2,
-      title: 'Airfoil Fundamentals',
-      content: [
-        { type: 'p', text: 'An airfoil generates lift by creating a pressure difference between its upper and lower surfaces. Air moving over the curved top surface travels farther and faster than air beneath the flatter bottom surface, producing lower pressure above and higher pressure below — the Bernoulli principle at work.' },
-        { type: 'p', text: 'But pressure distribution alone does not tell the full story. Newton\'s third law also applies: the wing deflects air downward, and the equal and opposite reaction pushes the wing upward. Both effects contribute to total lift, and their relative importance shifts with angle of attack and airfoil shape.' },
-      ],
+      "id": "three-airfoil-shapes",
+      "level": 2,
+      "title": "Part 1: The Three Big Airfoil Shapes",
+      "content": [
+        { "type": "p", "text": "To establish a baseline, we analyzed three classic airfoils through XFOIL computer simulations at typical RC flying speeds (a Reynolds Number of Re approx 150,000, which is equivalent to a 7.5-inch chord flying around 30 mph)." }
+      ]
     },
     {
-      id: 'camber',
-      level: 3,
-      title: 'Camber and Lift Generation',
-      content: [
-        { type: 'p', text: 'Camber is the asymmetry between the top and bottom curves of an airfoil. A cambered airfoil has a curved mean line — the imaginary line halfway between the upper and lower surfaces — while a symmetric airfoil has a straight mean line.' },
-        { type: 'p', text: 'Cambered airfoils generate lift even at zero degrees angle of attack. This makes them naturally efficient for cruising-level flight and allows lower wing loadings, which translates to slower landing speeds and gentler stall characteristics.' },
-        { type: 'p', text: 'Symmetric airfoils, by contrast, produce zero lift at zero angle of attack. They require a positive angle of attack to generate lift, which means higher takeoff speeds and more aggressive stall behavior. The payoff is that they perform identically upright and inverted, making them the go-to choice for 3D and aerobatic airframes.' },
-      ],
-    },
-    {
-      id: 'reynolds-numbers',
-      level: 2,
-      title: 'Reynolds Numbers at Model Scale',
-      content: [
-        { type: 'p', text: 'Reynolds number (Re) describes the ratio of inertial forces to viscous forces in a fluid. In practical terms, it determines whether the airflow over your wing is smooth (laminar) or chaotic (turbulent). At full scale, airliners operate at Re in the tens of millions. Your RC model? Typically between 50,000 and 500,000.' },
-        { type: 'p', text: 'At these low Reynolds numbers, air behaves more like honey. Boundary layers are thicker, flow separation happens earlier, and lift-to-drag ratios are dramatically lower than their full-scale counterparts. An airfoil that performs beautifully on a Cessna 172 will likely be a terrible choice for a 1.5-meter RC trainer.' },
-      ],
-    },
-    {
-      id: 'airfoil-comparison-table',
-      level: 3,
-      title: 'Common RC Airfoils Compared',
-      content: [
-        { type: 'p', text: 'The table below compares four airfoil families commonly used in RC aircraft. Each represents a different point in the design space between efficiency, stability, and maneuverability.' },
+      "id": "flat-bottom",
+      "level": 3,
+      "title": "1. The Flat-Bottom Airfoil (Example: Clark Y)",
+      "content": [
+        { "type": "p", "text": "The flat-bottom airfoil is the absolute staple of model aviation. Its distinguishing feature is a flat lower surface stretching from just behind the curved nose (leading edge) all the way to the tail (trailing edge)." },
+        { "type": "img", "src": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg", "caption": "placeholder" },
+        { "type": "p", "text": "Since the bottom is completely flat and the top curve is highly pronounced, this profile generates high amounts of lift even at very low speeds. In our aerodynamic simulations, a flat bottom airfoil maintains a high lift coefficient (approx 0.40) even at a 0 degree angle of attack. This means your plane will climb and fly level without needing to pitch its nose up." },
+        { "type": "p", "text": "Pros: Naturally stable and \"hands-off\" floaty. It is incredibly easy to build because you can pin the flat bottom sheet of balsa wood or foam board directly to a flat workbench." },
+        { "type": "p", "text": "Cons: Very sensitive to windy days (the high-lift shape acts like a sail) and struggles to fly upside down." },
         {
-          type: 'table',
-          headers: ['Airfoil', 'Type', 'Best For', 'Camber', 'Stall', 'Re Range'],
-          rows: [
-            ['Clark Y', 'Flat-bottom', 'Trainers', 'Moderate', 'Gradual', '50K–200K'],
-            ['NACA 2412', 'Semi-symmetric', 'Sport/G-P', 'Moderate', 'Moderate', '80K–400K'],
-            ['NACA 0012', 'Symmetric', 'Aerobatic', 'None', 'Sharp', '100K–500K'],
-            ['SD7032', 'Under-cambered', 'Thermal', 'High', 'Very Gentle', '30K–150K'],
-          ],
-        },
-        { type: 'p', text: 'The Clark Y airfoil has been a favorite among RC builders since the 1920s. Its flat bottom makes construction simple — you can build the wing directly on a flat board — and its gentle stall characteristics forgive the mistakes of novice pilots.' },
-      ],
+          "type": "callout",
+          "variant": "info",
+          "title": "Best Use Case",
+          "text": "This is best for first iteration trainers, heavy-lift cargo planes, and slow flying aircraft."
+        }
+      ]
     },
     {
-      id: 'mission-profiles',
-      level: 2,
-      title: 'Matching Airfoils to Mission Profiles',
-      content: [
-        { type: 'p', text: 'Your airfoil choice should be driven by what you want the aircraft to do. Below are the three most common RC mission profiles and the airfoil families that suit each.' },
+      "id": "semi-symmetrical",
+      "level": 3,
+      "title": "2. The Semi-Symmetrical Airfoil (Example: NACA 2412)",
+      "content": [
+        { "type": "p", "text": "A semi-symmetrical wing is the middle ground. The bottom surface has a subtle, gentle curve, while the top has a much more aggressive curve." },
+        { "type": "p", "text": "In our simulations, this shape offers the best overall aerodynamic efficiency. It strikes a brilliant compromise, producing solid lift (approx 0.24) while cutting through the air with significantly less drag than a flat-bottom wing. This gives it the highest Lift-to-Drag ratio, allowing the plane to glide incredibly far if the motor is cut." },
+        { "type": "p", "text": "Pros: Slices cleanly through gusty wind without getting tossed around and easily supports basic aerobatics (loops, rolls, and brief inverted flight)." },
+        { "type": "p", "text": "Cons: Higher landing speeds than flat-bottom wings. It is also more challenging to build because you cannot lay the curved bottom flat on a table without using custom wing jigs." },
         {
-          type: 'callout',
-          variant: 'tip',
-          title: 'Trainer Tip',
-          text: 'If this is your first build, choose the Clark Y. Its forgiving stall and easy construction will save you hours of repair time.',
-        },
-      ],
+          "type": "callout",
+          "variant": "info",
+          "title": "Best Use Case",
+          "text": "This is best for sport planes, scaled war planes, and long range gliders."
+        }
+      ]
     },
     {
-      id: 'trainers',
-      level: 3,
-      title: 'Trainers and Beginners',
-      content: [
-        { type: 'p', text: 'For training aircraft, predictability is king. You want an airfoil that produces ample lift at low speeds, stalls gradually and straight ahead, and gives the pilot plenty of warning before letting go.' },
-        { type: 'p', text: 'Flat-bottom airfoils like the Clark Y and the USA-35B are the gold standard here. Their high camber generates significant lift at low airspeeds, and the sharp trailing edge promotes clean flow separation that starts at the rear of the wing and moves forward as the angle of attack increases. This means the pilot feels a gentle mush rather than a sudden wing drop.' },
-      ],
-    },
-    {
-      id: 'sport-aerobatic',
-      level: 3,
-      title: 'Sport and Aerobatic',
-      content: [
-        { type: 'p', text: 'Once you graduate from training, you will likely want an airframe that can loop, roll, and fly inverted without fighting you. This is where symmetric and semi-symmetric airfoils shine.' },
-        { type: 'p', text: 'The NACA 0012 is the most popular symmetric section for RC aerobatics. Its zero-camber design means the aircraft behaves identically upright and inverted, and its relatively thin profile keeps drag low during high-speed maneuvers.' },
-      ],
-    },
-    {
-      id: 'thermal-gliders',
-      level: 3,
-      title: 'Thermal Gliders',
-      content: [
-        { type: 'p', text: 'For pilots chasing lift, the goal is maximum lift-to-drag ratio at the lowest possible speed. Under-cambered airfoils like the SD7032 and the FX 63-137 excel here.' },
-        { type: 'p', text: 'These airfoils have a pronounced concave lower surface that creates extremely high camber, generating exceptional lift at low Reynolds numbers. The tradeoff is structural complexity — the concave bottom makes foam-core or built-up construction challenging — and reduced high-speed performance.' },
+      "id": "symmetrical",
+      "level": 3,
+      "title": "3. The Fully Symmetrical Airfoil (Example: NACA 0012)",
+      "content": [
+        { "type": "p", "text": "The symmetrical airfoil is a perfect mirror image from top to bottom. If you fold it in half horizontally, the upper and lower halves match exactly." },
+        { "type": "img", "src": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg", "caption": "placeholder" },
+        { "type": "p", "text": "As the profile is perfectly balanced, it generates exactly zero lift when flying at a 0 angle of attack. To fly level, the pilot must maintain a slightly positive nose-up angle. Because there is no camber (asymmetry in the curve), this profile produces the lowest possible drag at high speeds." },
+        { "type": "p", "text": "Pros: Neutral handling. The plane behaves exactly the same whether it is flying right-side up or completely upside down. It rolls quickly, loops effortlessly, and goes exactly where you point it." },
+        { "type": "p", "text": "Cons: Zero hands-off stability. If you let go of the controls, the plane will not self-level. It will also stall much more abruptly when it gets too slow." },
         {
-          type: 'callout',
-          variant: 'warning',
-          title: 'Beware of Tip Stalls',
-          text: 'Under-cambered airfoils are prone to tip stalls if the wing lacks washout. Build in 2–3 degrees of washout to keep the root flying while the tips are already stalled.',
-        },
-      ],
+          "type": "callout",
+          "variant": "info",
+          "title": "Best Use Case",
+          "text": "This is best for pattern aerobatic ships, 3D stunt planes, and high-speed racers."
+        }
+      ]
     },
     {
-      id: 'practical-selection',
-      level: 2,
-      title: 'Practical Selection Framework',
-      content: [
-        { type: 'p', text: 'When evaluating an airfoil for your next build, follow this three-step process:' },
-        { type: 'p', text: 'Step 1 — Estimate your Reynolds number. Use the formula Re = (V × c) ÷ ν where V is velocity in m/s, c is chord length in meters, and ν is kinematic viscosity (roughly 1.5 × 10⁻⁵ at sea level). For a 0.2 m chord at 15 m/s, Re ≈ 200,000.' },
-        { type: 'p', text: 'Step 2 — Choose your camber. High camber (4–6%) for trainers and gliders. Low camber (2–3%) for sport models. Zero camber for aerobatic and 3D.' },
-        { type: 'p', text: 'Step 3 — Select thickness. Thicker airfoils (12–15% of chord) provide structural depth for spars and produce more drag. Thinner airfoils (8–10%) reduce drag but require stronger internal structure.' },
+      "id": "performance-chart",
+      "level": 3,
+      "title": "Performance Chart",
+      "content": [
+        { "type": "p", "text": "Here is how our virtual wind tunnel simulations rank these three shapes under identical scale-flight conditions. To keep our tests fair, we use a Reynolds Number of 150,000." },
+        { "type": "p", "text": "Re measures how air behaves around an object. Because small RC planes experience air \"friction\" differently than full sized aircraft, we set this number to match the specific conditions of small scale RC flight." },
         {
-          type: 'callout',
-          variant: 'info',
-          title: 'Airfoil Databases',
-          text: 'AirfoilTools.com and UIUC Airfoil Coordinates Database provide downloadable coordinates for hundreds of airfoils suitable for RC-scale Reynolds numbers.',
-        },
-      ],
+          "type": "table",
+          "headers": ["Airfoil Profile", "Level Flight Lift (CL at 0°)", "Drag Level (Low is faster)", "Glide Distance (With motor off)", "Pilot Skill Level"],
+          "rows": [
+            ["Flat-Bottom (Clark Y)", "High (0.40)", "High", "Good", "Beginner, easy to build"],
+            ["Semi-Symmetrical (NACA 2412)", "Medium (0.24)", "Medium", "Excellent (Best)", "Intermediate"],
+            ["Symmetrical (NACA 0012)", "None (0.00)", "Low (Best)", "Fair", "Advanced, difficult to mount on a foamboard trainer"]
+          ]
+        }
+      ]
     },
     {
-      id: 'boundary-layer',
-      level: 2,
-      title: 'Boundary Layer and Turbulators',
-      content: [
-        { type: 'p', text: 'At RC-scale Reynolds numbers, boundary layers are almost always laminar over the front portion of the wing. While laminar flow is low-drag, it is also fragile — it separates easily under adverse pressure gradients, leading to sudden stall.' },
-        { type: 'p', text: 'Many RC builders deliberately trip the boundary layer to turbulent using turbulators — strips of tape or mylar placed near the leading edge. Turbulent flow is higher-drag but more energetic and stays attached to the wing surface longer, producing a more gradual stall.' },
-        { type: 'p', text: 'A common rule of thumb: place turbulators at 10–15% of chord on the upper surface. Experiment with position during flight testing — you will feel the difference in stall behavior immediately.' },
-      ],
+      "id": "wing-geometry",
+      "level": 2,
+      "title": "Part 2: Wing Geometry and Physics",
+      "content": [
+        { "type": "p", "text": "An airfoil gives you lift, but how that wing is attached to your plane determines how stable it is. To build a successful RC plane, you need to understand three core stability concepts." },
+        { "type": "img", "src": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg", "caption": "placeholder" }
+      ]
     },
     {
-      id: 'conclusion',
-      level: 2,
-      title: 'Conclusion',
-      content: [
-        { type: 'p', text: 'Airfoil selection is one of the most consequential decisions you will make in an RC build, but it does not need to be paralyzing. For the vast majority of sport and trainer aircraft, a Clark Y or NACA 2412 will serve you well. As you branch into specialized flying — thermal duration, high-speed pylon, or 3D aerobatics — the airfoil becomes a tuning parameter you can adjust to extract the last few percent of performance.' },
-        { type: 'p', text: 'Start simple, build a few wings, and fly them back to back. Nothing beats empirical data from your own transmitter.' },
-      ],
+      "id": "dihedral-vs-anhedral",
+      "level": 3,
+      "title": "1. Dihedral vs. Anhedral (Rolling Stability)",
+      "content": [
+        { "type": "p", "text": "Dihedral (Wings angled upward in a slight \"V\" shape): When a gust of wind tips a dihedral wing to the left, the left wing becomes flatter to the ground while the right wing points steeper into the air. This causes the left wing to generate more lift than the right, naturally rolling the plane back to a level position." },
+        { "type": "p", "text": "Anhedral (Wings angled downward): This creates rolling instability. This is actually a feature on fighter jets and high-performance military cargo planes because it allows them to roll and change directions instantly without fighting the plane's natural tendency to level out." }
+      ]
     },
+    {
+      "id": "high-wing-vs-low-wing",
+      "level": 3,
+      "title": "2. High Wing vs. Low Wing: The Pendulum Effect",
+      "content": [
+        { "type": "p", "text": "Where you mount the wing on the body (fuselage) drastically changes how \"rocky\" or \"smooth\" the plane feels." },
+        { "type": "img", "src": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg", "caption": "placeholder" },
+        { "type": "p", "text": "High Wing (Pendulum Effect): Mounting the wing on top of the fuselage places the plane's heavy components (battery, receiver, servos) below the center of lift. Think of a weight hanging on a string: gravity naturally pulls the heavy fuselage downward, keeping the wing level. This makes high-wing setups incredibly stable and perfect for trainers." },
+        { "type": "p", "text": "Low Wing: Mounting the wing underneath the fuselage is like trying to balance a broomstick on your hand. Because the center of gravity is above the center of lift, the plane wants to roll easily. This makes it highly agile but less forgiving." }
+      ]
+    },
+    {
+      "id": "angle-of-attack-stall",
+      "level": 3,
+      "title": "3. Angle of Attack and the Stall Trap",
+      "content": [
+        { "type": "p", "text": "The Angle of Attack (AoA) is the angle between the chord line of your wing and the oncoming airflow." },
+        { "type": "img", "src": "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg", "caption": "placeholder" },
+        { "type": "p", "text": "The Lift Curve: As you pull back on your elevator stick, you pitch the nose up, increasing the Angle of Attack. This exposes more of the wing's underside to the air, generating more lift." },
+        { "type": "p", "text": "The Stall: Air likes to flow smoothly over the curved top of the wing. If you pitch the nose up too high (usually beyond 12 to 15 degrees), the air can no longer \"stick\" to the top surface. It breaks away in turbulent swirls, lift drops to zero, and the plane's nose drops like a stone." },
+        {
+          "type": "callout",
+          "variant": "warning",
+          "title": "Extremely Important Piloting Rule",
+          "text": "Beginners often try to climb by pulling back hard on the control stick. Remember: Use your motor power to control your climb, and your elevator to control your airspeed."
+        }
+      ]
+    },
+    {
+      "id": "conclusion",
+      "level": 2,
+      "title": "Conclusion",
+      "content": [
+        { "type": "p", "text": "In the end, choosing the right airfoil is a game of selecting the right flight characteristics for you. RC plane design and even aerospace engineering isn't about finding a perfect, all-in-one wing, it is about finding the perfect wing for your flight style and how you want your plane to behave in the air." },
+        { "type": "p", "text": "In order to experiment with different airfoils, use free tools like XFLR5 and SimScale to run your own virtual wind tunnel tests. See how tweaking your wing's aspect ratio or chord width changes your lift-to-drag curves." },
+        { "type": "p", "text": "Modeling can be done in FreeCAD or Fusion 360 (Autodesk) to sketch out your wing ribs, or design your own wing before developing your own physical wing." },
+        { "type": "p", "text": "Through these steps and this article, you will have the knowledge necessary to pick out the right wing for your RC aircraft. Good luck and happy flying!" }
+      ]
+    }
   ],
+  "articleNav": {
+    "previous": { "title": "Aircraft Design Overview", "path": "/design" },
+    "next": { "title": "Airfoil Geometry", "path": "/design/airfoil-geometry" }
+  },
+  "relatedArticles": [
+    {
+      "title": "Understanding Wing Loading",
+      "category": "Design",
+      "excerpt": "How wing area and weight affect stall speed, climb rate, and handling.",
+      "path": "/design/understanding-wing-loading",
+      "image": "https://images.unsplash.com/photo-1506942521071-5e6f16e1a2e5?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "title": "CG & Balance Fundamentals",
+      "category": "Design",
+      "excerpt": "Why neutral point, static margin, and CG location matter for stability.",
+      "path": "/design/cg-balance-fundamentals",
+      "image": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "title": "Building a Foamboard Trainer",
+      "category": "Build",
+      "excerpt": "A practical guide to creating a durable first airplane that survives early flights.",
+      "path": "/build/foamboard-trainer",
+      "image": "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
 }
 
 export const articleNav = {
