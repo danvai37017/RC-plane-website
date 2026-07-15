@@ -24,7 +24,7 @@ export default function FeaturedArticle() {
           <User size={14} strokeWidth={2} />
           <span>By {author}</span>
         </div>
-        <Button variant="ghost" href="#">
+        <Button variant="ghost" href={featuredArticle.path || '#'}>
           Read More <ArrowRight size={16} strokeWidth={2} />
         </Button>
       </div>

@@ -38,7 +38,12 @@ function ArticleSectionRenderer({ section }) {
           case 'image':
             return (
               <figure key={i} className={styles.figure}>
-                <img src={block.src} alt={block.caption || 'Article illustration'} className={styles.figureImg} />
+                <img
+                  src={block.src}
+                  alt={block.caption || 'Article illustration'}
+                  className={`${styles.figureImg} ${block.size === 'small' ? styles.figureImgSmall : ''}`.trim()}
+                  style={block.width ? { width: block.width } : undefined}
+                />
                 {block.caption ? <figcaption className={styles.figcaption}>{block.caption}</figcaption> : null}
               </figure>
             )

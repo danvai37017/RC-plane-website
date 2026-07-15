@@ -250,6 +250,11 @@
   border: 1px solid #e5e7eb;
 }
 
+.figureImgSmall {
+  width: 70%;
+  max-width: 560px;
+}
+
 .figcaption {
   margin-top: 16px;
   font-size: 14px;

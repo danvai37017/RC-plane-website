@@ -243,10 +243,12 @@ export const featuredArticle = {
   category: 'Design',
   readTime: '12 MIN READ',
   updated: 'UPDATED MAY 2026',
-  title: 'Choosing the Right Airfoil',
+  title: 'The Airfoil & Wing Geometry Guide',
   excerpt:
     'Understand how lift, drag, and stall behavior change with airfoil selection and why that matters for your build.',
-  author: 'Ryan Thompson',
+  author: 'Sidhanth Sridhar',
+  // path used by FeaturedArticle for linking
+  path: '/design/choosing-the-right-airfoil',
   image:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/1915ca_abger_fluegel_%28cropped_and_mirrored%29.jpg/960px-1915ca_abger_fluegel_%28cropped_and_mirrored%29.jpg',
 }
