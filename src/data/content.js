@@ -11,14 +11,6 @@ export const topicDropdowns = {
   design: {
     sections: [
       {
-        label: 'Recent',
-        items: [
-          { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil', icon: 'FileText' },
-          { title: 'Airfoil Geometry', path: '/design/airfoil-geometry', icon: 'Shapes' },
-          { title: 'Lift & Drag', path: '/design/lift-drag', icon: 'TrendingUp' },
-        ],
-      },
-      {
         label: 'Airfoils',
         items: [
           { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil', icon: 'Layers' },
@@ -47,14 +39,6 @@ export const topicDropdowns = {
   electronics: {
     sections: [
       {
-        label: 'Recent',
-        items: [
-          { title: 'Choosing a Motor', path: '/electronics/choosing-a-motor', icon: 'FileText' },
-          { title: 'Motor Kv Ratings', path: '/electronics/motor-kv-ratings', icon: 'Gauge' },
-          { title: 'ESC Compatibility', path: '/electronics/esc-compatibility', icon: 'Cpu' },
-        ],
-      },
-      {
         label: 'Motors',
         items: [
           { title: 'Choosing a Motor', path: '/electronics/choosing-a-motor', icon: 'Zap' },
@@ -74,14 +58,7 @@ export const topicDropdowns = {
   },
   tools: {
     sections: [
-      {
-        label: 'Recent',
-        items: [
-          { title: 'CG Calculator', path: '/tools/cg-calculator', icon: 'FileText' },
-          { title: 'Wing Loading', path: '/tools/wing-loading', icon: 'BarChart3' },
-          { title: 'Propeller Pitch', path: '/tools/propeller-pitch', icon: 'Fan' },
-        ],
-      },
+      
       {
         label: 'Calculators',
         items: [
@@ -103,14 +80,6 @@ export const topicDropdowns = {
   build: {
     sections: [
       {
-        label: 'Recent',
-        items: [
-          { title: 'Foamboard Trainer', path: '/build/foamboard-trainer', icon: 'FileText' },
-          { title: 'Hot Wire Cutting', path: '/build/hot-wire-cutting', icon: 'Flame' },
-          { title: 'Foam Finishing', path: '/build/foam-finishing', icon: 'Paintbrush' },
-        ],
-      },
-      {
         label: 'Foam',
         items: [
           { title: 'Foamboard Trainer', path: '/build/foamboard-trainer', icon: 'Box' },
@@ -131,14 +100,6 @@ export const topicDropdowns = {
   resources: {
     sections: [
       {
-        label: 'Recent',
-        items: [
-          { title: 'Plan Libraries', path: '/resources/plan-libraries', icon: 'FileText' },
-          { title: 'Airfoil Databases', path: '/resources/airfoil-databases', icon: 'Database' },
-          { title: 'Software Tools', path: '/resources/software-tools', icon: 'Monitor' },
-        ],
-      },
-      {
         label: 'Downloads',
         items: [
           { title: 'Plan Libraries', path: '/resources/plan-libraries', icon: 'Download' },
@@ -158,14 +119,6 @@ export const topicDropdowns = {
   },
   troubleshooting: {
     sections: [
-      {
-        label: 'Recent',
-        items: [
-          { title: 'Vibration Analysis', path: '/troubleshooting/vibration-analysis', icon: 'FileText' },
-          { title: 'Trim Troubles', path: '/troubleshooting/trim-troubles', icon: 'SlidersHorizontal' },
-          { title: 'Stall Recovery', path: '/troubleshooting/stall-recovery', icon: 'AlertTriangle' },
-        ],
-      },
       {
         label: 'Flight Issues',
         items: [
