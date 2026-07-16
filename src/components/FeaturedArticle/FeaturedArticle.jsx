@@ -1,12 +1,14 @@
 import { ArrowRight, User } from 'lucide-react'
-import { featuredArticle } from '../../data/content'
+import { getFeaturedArticle, toCard } from '../../data/articles'
 import CategoryBadge from '../ui/CategoryBadge/CategoryBadge'
 import Button from '../ui/Button/Button'
 import styles from './FeaturedArticle.module.css'
 
 export default function FeaturedArticle() {
-  const { category, readTime, updated, title, excerpt, author, image } =
-    featuredArticle
+  const article = toCard(getFeaturedArticle())
+  if (!article) return null
+
+  const { category, readingTime, updated, title, excerpt, author, image, path } = article
 
   return (
     <article className={styles.card}>
@@ -14,9 +16,9 @@ export default function FeaturedArticle() {
       <div className={styles.body}>
         <div className={styles.meta}>
           <CategoryBadge category={category} />
-          <span className={styles.metaText}>{readTime}</span>
-          <span className={styles.metaDot}>&middot;</span>
-          <span className={styles.metaText}>{updated}</span>
+          {readingTime && <span className={styles.metaText}>{readingTime.toUpperCase()}</span>}
+          {updated && <span className={styles.metaDot}>&middot;</span>}
+          {updated && <span className={styles.metaText}>UPDATED {updated.toUpperCase()}</span>}
         </div>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.excerpt}>{excerpt}</p>
@@ -24,7 +26,7 @@ export default function FeaturedArticle() {
           <User size={14} strokeWidth={2} />
           <span>By {author}</span>
         </div>
-        <Button variant="ghost" href={featuredArticle.path || '#'}>
+        <Button variant="ghost" href={path || '#'}>
           Read More <ArrowRight size={16} strokeWidth={2} />
         </Button>
       </div>

@@ -239,62 +239,8 @@ export const tools = [
   { name: 'Servo Calculator', icon: 'rotateCw' },
 ]
 
-export const featuredArticle = {
-  category: 'Design',
-  readTime: '12 MIN READ',
-  updated: 'UPDATED MAY 2026',
-  title: 'The Airfoil & Wing Geometry Guide',
-  excerpt:
-    'Understand how lift, drag, and stall behavior change with airfoil selection and why that matters for your build.',
-  author: 'Sidhanth Sridhar',
-  // path used by FeaturedArticle for linking
-  path: '/design/choosing-the-right-airfoil',
-  image:
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/1915ca_abger_fluegel_%28cropped_and_mirrored%29.jpg/960px-1915ca_abger_fluegel_%28cropped_and_mirrored%29.jpg',
-}
-
-export const latestArticles = [
-  {
-    title: 'Building a Foamboard Trainer',
-    category: 'Build',
-    excerpt:
-      'A practical guide to creating a durable first airplane that survives early flights.',
-    image:
-      'https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Understanding ESCs',
-    category: 'Electronics',
-    excerpt:
-      'Learn how electronic speed controllers influence power delivery and reliability.',
-    image:
-      'https://images.unsplash.com/photo-1558981806-ec527fa0c8f6?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Motor Gets Hot?',
-    category: 'Troubleshooting',
-    excerpt:
-      'A concise checklist for identifying overload, poor timing, or airflow issues.',
-    image:
-      'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Aerodynamic Principles for Beginners',
-    category: 'Design',
-    excerpt:
-      'Learn how lift, drag, thrust, and weight interact to keep your plane in the air.',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Ultimate Resource Guide for RC Pilots',
-    category: 'Resources',
-    excerpt:
-      'Curated links to airfoil databases, plan repositories, and community forums.',
-    image:
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80',
-  },
-]
+// Home-page featured and "latest" cards are derived from the article registry
+// (src/data/articles). See getFeaturedArticle() / getLatestArticles() there.
 
 export const categoryColors = {
   Design: { bg: '#eff6ff', text: '#2563eb' },

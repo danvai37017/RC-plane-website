@@ -146,6 +146,8 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  color: inherit;
+  text-decoration: none;
 }
 
 .small:nth-child(4) {

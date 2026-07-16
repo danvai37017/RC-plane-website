@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Clock, Calendar, User, ArrowUp, Download, ChevronLeft, ChevronRight, Lightbulb, AlertTriangle, Info, FileText } from 'lucide-react'
 import { navLinks } from '../data/content'
-import { articleContent, articleNav, relatedArticles } from '../data/articles'
+import { getArticle, getRelatedArticles, isPublished } from '../data/articles'
 import CategoryBadge from '../components/ui/CategoryBadge/CategoryBadge'
 import styles from './ArticlePage.module.css'
 
@@ -183,17 +183,18 @@ function TOCSidebar({ sections, activeId }) {
 }
 
 export default function ArticlePage() {
-  const { topic, article } = useParams()
-  const isRealArticle = topic === 'design' && article === 'choosing-the-right-airfoil'
+  const { topic, article: slug } = useParams()
+  const article = getArticle(topic, slug)
+  const isRealArticle = isPublished(article)
   const contentRef = useRef(null)
   const [activeId, setActiveId] = useState('')
   const sidebarTop = 120
 
   useEffect(() => {
     if (!isRealArticle) return
-    const id = articleContent.sections[0]?.id
+    const id = article.sections[0]?.id
     if (id) setActiveId(id)
-  }, [isRealArticle])
+  }, [isRealArticle, article])
 
   useEffect(() => {
     if (!isRealArticle) return
@@ -218,14 +219,15 @@ export default function ArticlePage() {
       <div className={styles.page}>
         <ReadingProgress />
         <div className={styles.inner}>
-          <PlaceholderContent topic={topic} article={article} />
+          <PlaceholderContent topic={topic} article={slug} />
         </div>
         <BackToTop />
       </div>
     )
   }
 
-  const { title, category, readingTime, difficulty, author, updated, breadcrumb, sections } = articleContent
+  const { title, category, readingTime, difficulty, author, updated, breadcrumb, sections, nav } = article
+  const relatedArticles = getRelatedArticles(article)
   const headerSections = sections.filter(s => s.level !== 2 || s.id !== 'key-takeaways')
 
   return (
@@ -271,22 +273,28 @@ export default function ArticlePage() {
               <ArticleSectionRenderer key={section.id || i} section={section} />
             ))}
 
-            <div className={styles.articleNav}>
-              <Link to={articleNav.previous.path} className={styles.articleNavLink}>
-                <ChevronLeft size={18} />
-                <div>
-                  <span className={styles.articleNavLabel}>Previous</span>
-                  <span className={styles.articleNavTitle}>{articleNav.previous.title}</span>
-                </div>
-              </Link>
-              <Link to={articleNav.next.path} className={`${styles.articleNavLink} ${styles.articleNavRight}`}>
-                <div>
-                  <span className={styles.articleNavLabel}>Next</span>
-                  <span className={styles.articleNavTitle}>{articleNav.next.title}</span>
-                </div>
-                <ChevronRight size={18} />
-              </Link>
-            </div>
+            {nav && (
+              <div className={styles.articleNav}>
+                {nav.previous && (
+                  <Link to={nav.previous.path} className={styles.articleNavLink}>
+                    <ChevronLeft size={18} />
+                    <div>
+                      <span className={styles.articleNavLabel}>Previous</span>
+                      <span className={styles.articleNavTitle}>{nav.previous.title}</span>
+                    </div>
+                  </Link>
+                )}
+                {nav.next && (
+                  <Link to={nav.next.path} className={`${styles.articleNavLink} ${styles.articleNavRight}`}>
+                    <div>
+                      <span className={styles.articleNavLabel}>Next</span>
+                      <span className={styles.articleNavTitle}>{nav.next.title}</span>
+                    </div>
+                    <ChevronRight size={18} />
+                  </Link>
+                )}
+              </div>
+            )}
 
             <div className={styles.relatedSection}>
               <h2 className={styles.relatedTitle}>Continue Learning</h2>
