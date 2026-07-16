@@ -1,25 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import {
-  Plane, Search, ChevronDown,
-  Layers, Shapes, TrendingUp, Scale, Rotate3D, ArrowUpDown, Wind, Container, Crosshair,
-  Zap, Gauge, Cpu, Battery, Cable,
-  Calculator, BarChart3, Fan, BookOpen, FileText, Ruler,
-  Box, Flame, Paintbrush, Trees, Hammer, Wrench,
-  Download, Database, Monitor, MessageCircle, Calendar, MapPin,
-  Vibrate, SlidersHorizontal, AlertTriangle, PowerOff, Wifi, BatteryWarning,
-} from 'lucide-react'
+import { Plane, Search, ChevronDown, ArrowRight } from 'lucide-react'
 import { navLinks, topicDropdowns } from '../../data/content'
 import styles from './Navigation.module.css'
-
-const iconMap = {
-  Layers, Shapes, TrendingUp, Scale, Rotate3D, ArrowUpDown, Wind, Container, Crosshair,
-  Zap, Gauge, Cpu, Battery, Cable,
-  Calculator, BarChart3, Fan, BookOpen, FileText, Ruler,
-  Box, Flame, Paintbrush, Trees, Hammer, Wrench,
-  Download, Database, Monitor, MessageCircle, Calendar, MapPin,
-  Vibrate, SlidersHorizontal, AlertTriangle, PowerOff, Wifi, BatteryWarning,
-}
 
 export default function Navigation() {
   const { pathname } = useLocation()
@@ -93,27 +76,27 @@ export default function Navigation() {
                     onMouseEnter={() => setOpenDropdown(link.dropdown)}
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
-                    {topicDropdowns[link.dropdown].sections.map((section, i) => (
-                      <div key={i} className={styles.section}>
-                        <span className={styles.sectionLabel}>{section.label}</span>
-                        {section.items.map((item) => {
-                          const Icon = iconMap[item.icon]
-                          const isItemActive = pathname === item.path
-                          return (
-                            <Link
-                              key={item.path}
-                              to={item.path}
-                              className={`${styles.dropdownItem} ${isItemActive ? styles.dropdownItemActive : ''}`}
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              {Icon && <Icon size={18} strokeWidth={1.6} className={styles.dropdownIcon} />}
-                              <span className={styles.dropdownText}>{item.title}</span>
-                              <ChevronDown size={16} strokeWidth={1.5} className={styles.dropdownArrow} />
-                            </Link>
-                          )
-                        })}
-                      </div>
-                    ))}
+                    {topicDropdowns[link.dropdown].items.map((item) => {
+                      const isItemActive = pathname === item.path
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className={`${styles.dropdownItem} ${isItemActive ? styles.dropdownItemActive : ''}`}
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          <span className={styles.dropdownText}>{item.title}</span>
+                        </Link>
+                      )
+                    })}
+                    <Link
+                      to={link.path}
+                      className={styles.seeMore}
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      <span>See More of {link.label}</span>
+                      <ArrowRight size={15} strokeWidth={2} className={styles.seeMoreArrow} />
+                    </Link>
                   </div>
                 )}
               </div>

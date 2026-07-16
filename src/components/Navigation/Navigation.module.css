@@ -125,14 +125,16 @@
 
 .dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 14px);
   left: 0;
-  width: 300px;
+  width: max-content;
+  min-width: 190px;
+  max-width: 280px;
   background: #12253e;
   border: 1px solid #20344f;
   border-radius: 6px;
   box-shadow: 0 18px 42px rgba(4, 15, 30, 0.22);
-  padding: 12px 16px;
+  padding: 14px 14px 10px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -148,45 +150,28 @@
   transform: translateY(0);
 }
 
-.section {
-  padding: 0;
-}
-
-.section + .section {
-  margin-top: 12px;
-}
-
-.sectionLabel {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--color-gray-400);
-  opacity: 0.7;
-}
-
 .dropdownItem {
   position: relative;
   display: flex;
   align-items: center;
-  height: 52px;
+  height: 38px;
   padding: 0 10px;
+  margin-bottom: 2px;
   text-decoration: none;
   color: #f8fafc;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   font-family: Inter, 'Segoe UI', Roboto, sans-serif;
   border-radius: 4px;
   transition: background 180ms ease;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .dropdownItem::before {
   content: '';
   position: absolute;
-  left: -12px;
+  left: -10px;
   top: 15%;
   bottom: 15%;
   width: 3px;
@@ -215,12 +200,6 @@
   color: var(--color-white);
 }
 
-.dropdownIcon {
-  flex-shrink: 0;
-  color: #8aa4c8;
-  margin-right: 12px;
-}
-
 .dropdownText {
   flex: 1;
   white-space: nowrap;
@@ -228,26 +207,34 @@
   text-overflow: ellipsis;
 }
 
-.dropdownArrow {
-  flex-shrink: 0;
-  color: #8aa4c8;
-  margin-left: 8px;
-}
-
-.viewAll {
-  display: block;
-  padding: 12px 10px 0;
-  font-size: 14px;
+.seeMore {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  padding: 0 10px;
+  margin-top: 4px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--color-blue-600);
+  color: var(--color-blue-500);
   text-decoration: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin-top: 12px;
-  transition: background 180ms ease;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  transition: background 180ms ease, color 180ms ease;
 }
 
-.viewAll:hover {
+.seeMore:hover {
   color: #3b82f6;
+  background: #1e3a5f;
+}
+
+.seeMoreArrow {
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+}
+
+.seeMore:hover .seeMoreArrow {
+  transform: translateX(3px);
 }
 
 @media (max-width: 1100px) {

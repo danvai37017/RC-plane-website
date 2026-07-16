@@ -9,132 +9,71 @@ export const navLinks = [
 
 export const topicDropdowns = {
   design: {
-    sections: [
-      {
-        label: 'Airfoils',
-        items: [
-          { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil', icon: 'Layers' },
-          { title: 'Airfoil Geometry', path: '/design/airfoil-geometry', icon: 'Shapes' },
-          { title: 'Lift & Drag', path: '/design/lift-drag', icon: 'TrendingUp' },
-        ],
-      },
-      {
-        label: 'Stability',
-        items: [
-          { title: 'CG & Balance', path: '/design/cg-balance', icon: 'Scale' },
-          { title: 'Dihedral Effect', path: '/design/dihedral-effect', icon: 'Rotate3D' },
-          { title: 'Pitch Stability', path: '/design/pitch-stability', icon: 'ArrowUpDown' },
-        ],
-      },
-      {
-        label: 'Layout',
-        items: [
-          { title: 'Wing Design', path: '/design/wing-design', icon: 'Wind' },
-          { title: 'Fuselage Layout', path: '/design/fuselage-layout', icon: 'Container' },
-          { title: 'Tail Sizing', path: '/design/tail-sizing', icon: 'Crosshair' },
-        ],
-      },
+    items: [
+      { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil' },
+      { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
+      { title: 'Lift & Drag', path: '/design/lift-drag' },
+      { title: 'CG & Balance', path: '/design/cg-balance' },
+      { title: 'Dihedral Effect', path: '/design/dihedral-effect' },
+      { title: 'Pitch Stability', path: '/design/pitch-stability' },
+      { title: 'Wing Design', path: '/design/wing-design' },
+      { title: 'Fuselage Layout', path: '/design/fuselage-layout' },
+      { title: 'Tail Sizing', path: '/design/tail-sizing' },
     ],
   },
   electronics: {
-    sections: [
-      {
-        label: 'Motors',
-        items: [
-          { title: 'Choosing a Motor', path: '/electronics/choosing-a-motor', icon: 'Zap' },
-          { title: 'Motor Kv Ratings', path: '/electronics/motor-kv-ratings', icon: 'Gauge' },
-          { title: 'ESC Compatibility', path: '/electronics/esc-compatibility', icon: 'Cpu' },
-        ],
-      },
-      {
-        label: 'Power',
-        items: [
-          { title: 'Battery Selection', path: '/electronics/battery-selection', icon: 'Battery' },
-          { title: 'Wiring Basics', path: '/electronics/wiring-basics', icon: 'Cable' },
-          { title: 'Voltage & Current', path: '/electronics/voltage-current', icon: 'Zap' },
-        ],
-      },
+    items: [
+      { title: 'Choosing a Motor', path: '/electronics/choosing-a-motor' },
+      { title: 'Motor Kv Ratings', path: '/electronics/motor-kv-ratings' },
+      { title: 'Understanding ESCs', path: '/electronics/understanding-escs' },
+      { title: 'Battery Selection', path: '/electronics/battery-selection' },
+      { title: 'Wiring Basics', path: '/electronics/wiring-basics' },
+      { title: 'Voltage & Current', path: '/electronics/voltage-current' },
+      { title: 'Propeller Matching', path: '/electronics/propeller-matching' },
+      { title: 'Servo Basics', path: '/electronics/servo-basics' },
     ],
   },
   tools: {
-    sections: [
-      
-      {
-        label: 'Calculators',
-        items: [
-          { title: 'CG Calculator', path: '/tools/cg-calculator', icon: 'Calculator' },
-          { title: 'Wing Loading', path: '/tools/wing-loading', icon: 'BarChart3' },
-          { title: 'Propeller Pitch', path: '/tools/propeller-pitch', icon: 'Fan' },
-        ],
-      },
-      {
-        label: 'Reference',
-        items: [
-          { title: 'Material Properties', path: '/tools/material-properties', icon: 'BookOpen' },
-          { title: 'Conversion Charts', path: '/tools/conversion-charts', icon: 'FileText' },
-          { title: 'Thread Standards', path: '/tools/thread-standards', icon: 'Ruler' },
-        ],
-      },
+    items: [
+      { title: 'CG Calculator', path: '/tools/cg-calculator' },
+      { title: 'Wing Loading', path: '/tools/wing-loading' },
+      { title: 'Propeller Pitch', path: '/tools/propeller-pitch' },
+      { title: 'Material Properties', path: '/tools/material-properties' },
+      { title: 'Conversion Charts', path: '/tools/conversion-charts' },
+      { title: 'Thread Standards', path: '/tools/thread-standards' },
     ],
   },
   build: {
-    sections: [
-      {
-        label: 'Foam',
-        items: [
-          { title: 'Foamboard Trainer', path: '/build/foamboard-trainer', icon: 'Box' },
-          { title: 'Hot Wire Cutting', path: '/build/hot-wire-cutting', icon: 'Flame' },
-          { title: 'Foam Finishing', path: '/build/foam-finishing', icon: 'Paintbrush' },
-        ],
-      },
-      {
-        label: 'Wood',
-        items: [
-          { title: 'Balsa Basics', path: '/build/balsa-basics', icon: 'Trees' },
-          { title: 'Spar Construction', path: '/build/spar-construction', icon: 'Hammer' },
-          { title: 'Covering Techniques', path: '/build/covering-techniques', icon: 'Wrench' },
-        ],
-      },
+    items: [
+      { title: 'Foamboard Trainer', path: '/build/foamboard-trainer' },
+      { title: 'Hot Wire Cutting', path: '/build/hot-wire-cutting' },
+      { title: 'Foam Finishing', path: '/build/foam-finishing' },
+      { title: 'Balsa Basics', path: '/build/balsa-basics' },
+      { title: 'Spar Construction', path: '/build/spar-construction' },
+      { title: 'Covering Techniques', path: '/build/covering-techniques' },
+      { title: 'Composite Layup Basics', path: '/build/composite-layup-basics' },
     ],
   },
   resources: {
-    sections: [
-      {
-        label: 'Downloads',
-        items: [
-          { title: 'Plan Libraries', path: '/resources/plan-libraries', icon: 'Download' },
-          { title: 'Airfoil Databases', path: '/resources/airfoil-databases', icon: 'Database' },
-          { title: 'Software Tools', path: '/resources/software-tools', icon: 'Monitor' },
-        ],
-      },
-      {
-        label: 'Community',
-        items: [
-          { title: 'Forums & Groups', path: '/resources/forums-groups', icon: 'MessageCircle' },
-          { title: 'Events Calendar', path: '/resources/events-calendar', icon: 'Calendar' },
-          { title: 'Club Directory', path: '/resources/club-directory', icon: 'MapPin' },
-        ],
-      },
+    items: [
+      { title: 'Ultimate Resource Guide', path: '/resources/ultimate-resource-guide-for-rc-pilots' },
+      { title: 'Plan Libraries', path: '/resources/plan-libraries' },
+      { title: 'Airfoil Databases', path: '/resources/airfoil-databases' },
+      { title: 'Software Tools', path: '/resources/software-tools' },
+      { title: 'Forums & Groups', path: '/resources/forums-groups' },
+      { title: 'Events Calendar', path: '/resources/events-calendar' },
+      { title: 'Club Directory', path: '/resources/club-directory' },
     ],
   },
   troubleshooting: {
-    sections: [
-      {
-        label: 'Flight Issues',
-        items: [
-          { title: 'Vibration Analysis', path: '/troubleshooting/vibration-analysis', icon: 'Vibrate' },
-          { title: 'Trim Troubles', path: '/troubleshooting/trim-troubles', icon: 'SlidersHorizontal' },
-          { title: 'Stall Recovery', path: '/troubleshooting/stall-recovery', icon: 'AlertTriangle' },
-        ],
-      },
-      {
-        label: 'Electronics',
-        items: [
-          { title: 'Motor Not Spinning', path: '/troubleshooting/motor-not-spinning', icon: 'PowerOff' },
-          { title: 'Radio Interference', path: '/troubleshooting/radio-interference', icon: 'Wifi' },
-          { title: 'Battery Failure', path: '/troubleshooting/battery-failure', icon: 'BatteryWarning' },
-        ],
-      },
+    items: [
+      { title: 'Vibration Analysis', path: '/troubleshooting/vibration-analysis' },
+      { title: 'Trim Troubles', path: '/troubleshooting/trim-troubles' },
+      { title: 'Stall Recovery', path: '/troubleshooting/stall-recovery' },
+      { title: 'Motor Gets Hot?', path: '/troubleshooting/motor-gets-hot' },
+      { title: 'Motor Not Spinning', path: '/troubleshooting/motor-not-spinning' },
+      { title: 'Radio Interference', path: '/troubleshooting/radio-interference' },
+      { title: 'Battery Failure', path: '/troubleshooting/battery-failure' },
     ],
   },
 }

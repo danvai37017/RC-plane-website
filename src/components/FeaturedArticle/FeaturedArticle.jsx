@@ -1,4 +1,5 @@
 import { ArrowRight, User } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { getFeaturedArticle, toCard } from '../../data/articles'
 import CategoryBadge from '../ui/CategoryBadge/CategoryBadge'
 import Button from '../ui/Button/Button'
@@ -20,8 +21,10 @@ export default function FeaturedArticle() {
           {updated && <span className={styles.metaDot}>&middot;</span>}
           {updated && <span className={styles.metaText}>UPDATED {updated.toUpperCase()}</span>}
         </div>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.excerpt}>{excerpt}</p>
+        <Link to={path || '#'} className={styles.titleGroup}>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.excerpt}>{excerpt}</p>
+        </Link>
         <div className={styles.author}>
           <User size={14} strokeWidth={2} />
           <span>By {author}</span>
