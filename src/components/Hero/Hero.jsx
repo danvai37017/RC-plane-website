@@ -11,7 +11,7 @@ export default function Hero() {
           <span className={styles.pill}>RC AIRCRAFT KNOWLEDGE HUB</span>
           <h1 className={styles.headline}>
             BUILD.
-            <br />
+            <br />  
             LEARN.
             <br />
             FLY.

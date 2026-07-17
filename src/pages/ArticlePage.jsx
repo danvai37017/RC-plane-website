@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import { Clock, Calendar, User, ArrowUp, Download, ChevronLeft, ChevronRight, Lightbulb, AlertTriangle, Info, FileText } from 'lucide-react'
 import { navLinks } from '../data/content'
 import { getArticle, getRelatedArticles, isPublished } from '../data/articles'
-import CategoryBadge from '../components/ui/CategoryBadge/CategoryBadge'
 import styles from './ArticlePage.module.css'
 
 const calloutIcons = { tip: Lightbulb, warning: AlertTriangle, info: Info }
@@ -188,7 +187,7 @@ export default function ArticlePage() {
   const isRealArticle = isPublished(article)
   const contentRef = useRef(null)
   const [activeId, setActiveId] = useState('')
-  const sidebarTop = 120
+  const sidebarTop = 138
 
   useEffect(() => {
     if (!isRealArticle) return
@@ -226,26 +225,13 @@ export default function ArticlePage() {
     )
   }
 
-  const { title, category, readingTime, difficulty, author, updated, breadcrumb, sections, nav } = article
+  const { title, readingTime, difficulty, author, updated, sections, nav } = article
   const relatedArticles = getRelatedArticles(article)
   const headerSections = sections.filter(s => s.level !== 2 || s.id !== 'key-takeaways')
 
   return (
     <div className={styles.page}>
       <ReadingProgress />
-
-      <div className={styles.breadcrumbWrap}>
-        <div className={styles.inner}>
-          <nav className={styles.breadcrumb}>
-            {breadcrumb.map((crumb, i) => (
-              <span key={i}>
-                {i > 0 && <span className={styles.breadcrumbSep}>/</span>}
-                <span className={i === breadcrumb.length - 1 ? styles.breadcrumbCurrent : styles.breadcrumbLink}>{crumb}</span>
-              </span>
-            ))}
-          </nav>
-        </div>
-      </div>
 
       <div className={styles.inner}>
         <div className={styles.layout}>
@@ -254,7 +240,6 @@ export default function ArticlePage() {
           </div>
 
           <article className={styles.article} ref={contentRef}>
-            <CategoryBadge category={category} />
             <h1 className={styles.title}>{title}</h1>
 
             <div className={styles.metadata}>
@@ -303,7 +288,6 @@ export default function ArticlePage() {
                   <Link key={a.path} to={a.path} className={styles.relatedCard}>
                     <img src={a.image} alt={a.title} className={styles.relatedImg} />
                     <div className={styles.relatedBody}>
-                      <CategoryBadge category={a.category} />
                       <h3 className={styles.relatedCardTitle}>{a.title}</h3>
                       <p className={styles.relatedExcerpt}>{a.excerpt}</p>
                     </div>

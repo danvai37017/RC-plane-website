@@ -25,40 +25,18 @@
   transition: width 100ms linear;
 }
 
-.breadcrumbWrap {
-  padding-top: 32px;
-}
-
-.breadcrumb {
-  font-size: 14px;
-  color: #6b7280;
-}
-
-.breadcrumbSep {
-  margin: 0 8px;
-  color: #d1d5db;
-}
-
-.breadcrumbLink {
-  color: #6b7280;
-}
-
-.breadcrumbCurrent {
-  color: #111827;
-  font-weight: 500;
-}
-
 .layout {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 64px;
   align-items: start;
+  padding-top: 32px;
   padding-bottom: 80px;
 }
 
 .sidebarWrap {
   position: sticky;
-  top: 120px;
+  top: 138px;
 }
 
 .sidebar {
@@ -508,6 +486,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-clamp: 2;
 }
 
 .backToTop {
@@ -633,7 +612,7 @@
     grid-template-columns: 1fr;
   }
 
-  .breadcrumbWrap {
+  .layout {
     padding-top: 24px;
   }
 }
