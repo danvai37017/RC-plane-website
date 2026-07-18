@@ -53,6 +53,8 @@ export function toCard(article) {
     author: article.author,
     image: firstImage(article),
     readingTime: article.readingTime,
+    difficulty: article.difficulty,
+    tags: article.tags || [],
     updated: article.updated,
   }
 }
@@ -76,6 +78,15 @@ export function getArticle(topic, slug) {
 
 export function getAllArticles() {
   return [...allArticles]
+}
+
+// Every article in a topic (published + draft stubs), newest first, as cards.
+// Drives the topic landing page (src/pages/TopicPage).
+export function getArticlesByTopic(topic) {
+  return [...allArticles]
+    .filter((a) => a.topic === topic)
+    .sort(byNewest)
+    .map(toCard)
 }
 
 // The home-page featured article: the one flagged `featured: true`, else newest.

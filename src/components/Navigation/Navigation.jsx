@@ -53,12 +53,7 @@ export default function Navigation() {
                   to={link.path}
                   className={`${styles.navLink} ${isActive ? styles.active : ''}`}
                   onMouseEnter={() => setOpenDropdown(link.dropdown)}
-                  onClick={(e) => {
-                    if (link.dropdown) {
-                      e.preventDefault()
-                      setOpenDropdown(isDropdownOpen ? null : link.dropdown)
-                    }
-                  }}
+                  onClick={() => setOpenDropdown(null)}
                 >
                   {link.label}
                   {link.dropdown && (

@@ -3,6 +3,7 @@ export default {
   topic: 'troubleshooting',
   slug: 'motor-gets-hot',
   category: 'Troubleshooting',
+  tags: ['Motor'],
   title: 'Motor Gets Hot?',
   excerpt:
     'A concise checklist for identifying overload, poor timing, or airflow issues.',

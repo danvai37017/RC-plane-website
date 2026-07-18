@@ -5,6 +5,7 @@ export default {
   topic: 'build',
   slug: 'foamboard-trainer',
   category: 'Build',
+  tags: ['Foam'],
   title: 'Building a Foamboard Trainer',
   excerpt:
     'A practical guide to creating a durable first airplane that survives early flights.',

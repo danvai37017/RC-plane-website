@@ -3,6 +3,7 @@ export default {
   topic: 'resources',
   slug: 'ultimate-resource-guide-for-rc-pilots',
   category: 'Resources',
+  tags: ['Guides'],
   title: 'Ultimate Resource Guide for RC Pilots',
   excerpt:
     'Curated links to airfoil databases, plan repositories, and community forums.',

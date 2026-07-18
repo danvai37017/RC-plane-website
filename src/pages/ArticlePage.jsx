@@ -37,12 +37,22 @@ function ArticleSectionRenderer({ section }) {
           case 'image':
             return (
               <figure key={i} className={styles.figure}>
-                <img
-                  src={block.src}
-                  alt={block.caption || 'Article illustration'}
-                  className={`${styles.figureImg} ${block.size === 'small' ? styles.figureImgSmall : ''}`.trim()}
-                  style={block.width ? { width: block.width } : undefined}
-                />
+                {block.crop ? (
+                  <div className={`${styles.cropWrap} ${styles[`crop_${block.crop}`] || ''}`.trim()}>
+                    <img
+                      src={block.src}
+                      alt={block.caption || 'Article illustration'}
+                      className={styles.cropImg}
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={block.src}
+                    alt={block.caption || 'Article illustration'}
+                    className={`${styles.figureImg} ${block.size === 'small' ? styles.figureImgSmall : ''}`.trim()}
+                    style={block.width ? { width: block.width } : undefined}
+                  />
+                )}
                 {block.caption ? <figcaption className={styles.figcaption}>{block.caption}</figcaption> : null}
               </figure>
             )
@@ -86,11 +96,11 @@ function ArticleSectionRenderer({ section }) {
   )
 }
 
-function PlaceholderContent({ topic, article }) {
+function PlaceholderContent({ topic, article, title }) {
   const displayTopic = (navLinks.find(l => l.path.replace('/', '') === topic)?.label) || topic
-  const displayArticle = article
+  const displayArticle = title || (article
     ? article.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-    : 'Article'
+    : 'Article')
 
   return (
     <div className={styles.placeholder}>
@@ -218,7 +228,7 @@ export default function ArticlePage() {
       <div className={styles.page}>
         <ReadingProgress />
         <div className={styles.inner}>
-          <PlaceholderContent topic={topic} article={slug} />
+          <PlaceholderContent topic={topic} article={slug} title={article?.title} />
         </div>
         <BackToTop />
       </div>

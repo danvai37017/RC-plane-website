@@ -78,6 +78,34 @@ export const topicDropdowns = {
   },
 }
 
+// Per-topic copy for the dedicated topic landing pages (src/pages/TopicPage).
+export const topicLanding = {
+  design: {
+    subtitle:
+      'Explore the fundamentals of airfoils, stability, and structural layout — and learn how each design choice shapes the way your aircraft flies.',
+  },
+  electronics: {
+    subtitle:
+      'Understand motors, ESCs, batteries, and wiring so you can build a reliable power system with confidence.',
+  },
+  tools: {
+    subtitle:
+      'Fast, practical calculators for center of gravity, wing loading, propeller sizing, and more — right when you need them.',
+  },
+  build: {
+    subtitle:
+      'Step-by-step build guides for foam, balsa, and composite aircraft, from your first trainer to advanced airframes.',
+  },
+  resources: {
+    subtitle:
+      'Curated references, downloads, and community links to help you plan, tune, and keep learning.',
+  },
+  troubleshooting: {
+    subtitle:
+      'Diagnose common RC aircraft problems, understand why they happen, and learn proven solutions for motors, electronics, aerodynamics, radio systems, and more.',
+  },
+}
+
 export const topics = [
   {
     title: 'Design',

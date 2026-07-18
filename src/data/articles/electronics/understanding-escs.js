@@ -3,6 +3,7 @@ export default {
   topic: 'electronics',
   slug: 'understanding-escs',
   category: 'Electronics',
+  tags: ['ESCs'],
   title: 'Understanding ESCs',
   excerpt:
     'Learn how electronic speed controllers influence power delivery and reliability.',

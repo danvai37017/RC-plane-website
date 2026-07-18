@@ -2,6 +2,7 @@ export default {
   topic: 'design',
   slug: 'choosing-the-right-airfoil',
   category: 'Design',
+  tags: ['Airfoils', 'Stability'],
   title: 'Choosing the Right Airfoil for Your RC Plane',
   author: 'Sidhanth Sridhar',
   readingTime: '12 min read',
@@ -140,8 +141,11 @@ export default {
       title: '1. Dihedral vs. Anhedral (Rolling Stability)',
       content: [
         { type: 'p', text: 'Dihedral (Wings angled upward in a slight "V" shape): When a gust of wind tips a dihedral wing to the left, the left wing becomes flatter to the ground while the right wing points steeper into the air. This causes the left wing to generate more lift than the right, naturally rolling the plane back to a level position.' },
-        { type: 'img', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg/960px-Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg.png', caption: 'Dihedral and anhedral wing geometry', size: 'small' },
+        { type: 'img', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg/960px-Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg.png', crop: 'top', caption: 'Dihedral (+Γ): wings angled up above the horizontal.' },
+        { type: 'p', text: '[Placeholder — to be written] Neutral (Zero Dihedral, Γ = 0°): The wings sit perfectly flat, with no upward or downward angle. This gives a roll response that falls right between the self-correcting dihedral setup and the twitchier anhedral setup — the plane neither fights nor amplifies a roll on its own.' },
+        { type: 'img', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg/960px-Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg.png', crop: 'middle', caption: 'Neutral (Γ = 0°): wings level with the horizontal.' },
         { type: 'p', text: "Anhedral (Wings angled downward): This creates rolling instability. This is actually a feature on fighter jets and high-performance military cargo planes because it allows them to roll and change directions instantly without fighting the plane's natural tendency to level out." },
+        { type: 'img', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg/960px-Dihedral_and_anhedral_angle_%28aircraft_wing%29.svg.png', crop: 'bottom', caption: 'Anhedral (−Γ): wings angled down below the horizontal.' },
       ],
     },
     {
