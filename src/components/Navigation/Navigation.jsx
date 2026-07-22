@@ -9,6 +9,30 @@ export default function Navigation() {
   const [openDropdown, setOpenDropdown] = useState(null)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const navRef = useRef(null)
+  const closeTimeoutRef = useRef(null)
+
+  function clearCloseTimeout() {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }
+
+  function openDropdownNow(dropdown) {
+    clearCloseTimeout()
+    setOpenDropdown(dropdown)
+  }
+
+  // Delay the close slightly so moving the mouse from the nav link down into
+  // the dropdown (across the gap that shows the underline animation) doesn't
+  // flicker-close it. Still closes on its own if the mouse leaves the whole
+  // nav-item area (link + dropdown) without landing back on either.
+  function closeDropdownSoon() {
+    clearCloseTimeout()
+    closeTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null)
+    }, 150)
+  }
 
   useEffect(() => {
     const topic = pathname.split('/')[1]
@@ -20,11 +44,15 @@ export default function Navigation() {
   useEffect(() => {
     function handleClickOutside(e) {
       if (navRef.current && !navRef.current.contains(e.target)) {
+        clearCloseTimeout()
         setOpenDropdown(null)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      clearCloseTimeout()
+    }
   }, [])
 
   const topic = pathname.split('/')[1]
@@ -52,8 +80,12 @@ export default function Navigation() {
                 <Link
                   to={link.path}
                   className={`${styles.navLink} ${isActive ? styles.active : ''}`}
-                  onMouseEnter={() => setOpenDropdown(link.dropdown)}
-                  onClick={() => setOpenDropdown(null)}
+                  onMouseEnter={() => openDropdownNow(link.dropdown)}
+                  onMouseLeave={closeDropdownSoon}
+                  onClick={() => {
+                    clearCloseTimeout()
+                    setOpenDropdown(null)
+                  }}
                 >
                   {link.label}
                   {link.dropdown && (
@@ -68,8 +100,8 @@ export default function Navigation() {
                 {link.dropdown && (
                   <div
                     className={`${styles.dropdown} ${isDropdownOpen ? styles.dropdownVisible : ''}`}
-                    onMouseEnter={() => setOpenDropdown(link.dropdown)}
-                    onMouseLeave={() => setOpenDropdown(null)}
+                    onMouseEnter={() => openDropdownNow(link.dropdown)}
+                    onMouseLeave={closeDropdownSoon}
                   >
                     {topicDropdowns[link.dropdown].items.map((item) => {
                       const isItemActive = pathname === item.path
@@ -78,7 +110,10 @@ export default function Navigation() {
                           key={item.path}
                           to={item.path}
                           className={`${styles.dropdownItem} ${isItemActive ? styles.dropdownItemActive : ''}`}
-                          onClick={() => setOpenDropdown(null)}
+                          onClick={() => {
+                            clearCloseTimeout()
+                            setOpenDropdown(null)
+                          }}
                         >
                           <span className={styles.dropdownText}>{item.title}</span>
                         </Link>
@@ -87,7 +122,10 @@ export default function Navigation() {
                     <Link
                       to={link.path}
                       className={styles.seeMore}
-                      onClick={() => setOpenDropdown(null)}
+                      onClick={() => {
+                        clearCloseTimeout()
+                        setOpenDropdown(null)
+                      }}
                     >
                       <span>See More of {link.label}</span>
                       <ArrowRight size={15} strokeWidth={2} className={styles.seeMoreArrow} />
@@ -97,7 +135,15 @@ export default function Navigation() {
               </div>
             )
           })}
-          <a href="#" className={styles.searchLink} aria-label="Search">
+          <a
+            href="#"
+            className={styles.searchLink}
+            aria-label="Search"
+            onMouseEnter={() => {
+              clearCloseTimeout()
+              setOpenDropdown(null)
+            }}
+          >
             <Search size={18} strokeWidth={2} />
           </a>
         </nav>

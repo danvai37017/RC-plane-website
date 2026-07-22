@@ -10,15 +10,17 @@ export const navLinks = [
 export const topicDropdowns = {
   design: {
     items: [
+      { title: 'Plane Terminology', path: '/design/plane-terminology' },
       { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil' },
+      { title: 'Wing Placement and Positioning', path: '/design/wing-placement-and-positioning' },
       { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
-      { title: 'Lift & Drag', path: '/design/lift-drag' },
       { title: 'CG & Balance', path: '/design/cg-balance' },
       { title: 'Dihedral Effect', path: '/design/dihedral-effect' },
-      { title: 'Pitch Stability', path: '/design/pitch-stability' },
       { title: 'Wing Design', path: '/design/wing-design' },
       { title: 'Fuselage Layout', path: '/design/fuselage-layout' },
       { title: 'Tail Sizing', path: '/design/tail-sizing' },
+      { title: 'Adverse Yaw', path: '/design/adverse-yaw' },
+      { title: 'Motor Angling', path: '/design/motor-angling' },
     ],
   },
   electronics: {
