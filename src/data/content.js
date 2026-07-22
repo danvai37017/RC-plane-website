@@ -15,7 +15,6 @@ export const topicDropdowns = {
       { title: 'Wing Placement and Positioning', path: '/design/wing-placement-and-positioning' },
       { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
       { title: 'CG & Balance', path: '/design/cg-balance' },
-      { title: 'Dihedral Effect', path: '/design/dihedral-effect' },
       { title: 'Wing Design', path: '/design/wing-design' },
       { title: 'Fuselage Layout', path: '/design/fuselage-layout' },
       { title: 'Tail Sizing', path: '/design/tail-sizing' },
