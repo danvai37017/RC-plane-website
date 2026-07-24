@@ -11,15 +11,14 @@ export const topicDropdowns = {
   design: {
     items: [
       { title: 'Plane Terminology', path: '/design/plane-terminology' },
+      { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
       { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil' },
       { title: 'Wing Placement and Positioning', path: '/design/wing-placement-and-positioning' },
-      { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
       { title: 'CG & Balance', path: '/design/cg-balance' },
       { title: 'Wing Design', path: '/design/wing-design' },
       { title: 'Fuselage Layout', path: '/design/fuselage-layout' },
       { title: 'Tail Sizing', path: '/design/tail-sizing' },
       { title: 'Adverse Yaw', path: '/design/adverse-yaw' },
-      { title: 'Motor Angling', path: '/design/motor-angling' },
     ],
   },
   electronics: {
@@ -36,12 +35,11 @@ export const topicDropdowns = {
   },
   tools: {
     items: [
-      { title: 'CG Calculator', path: '/tools/cg-calculator' },
       { title: 'Wing Loading', path: '/tools/wing-loading' },
       { title: 'Propeller Pitch', path: '/tools/propeller-pitch' },
       { title: 'Material Properties', path: '/tools/material-properties' },
       { title: 'Conversion Charts', path: '/tools/conversion-charts' },
-      { title: 'Thread Standards', path: '/tools/thread-standards' },
+      { title: 'Formulas', path: '/tools/formulas' },
     ],
   },
   build: {
