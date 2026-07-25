@@ -10,7 +10,7 @@ export const navLinks = [
 export const topicDropdowns = {
   design: {
     items: [
-      { title: 'Plane Terminology', path: '/design/plane-terminology' },
+      { title: 'Airplane Terminology', path: '/design/plane-terminology' },
       { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
       { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil' },
       { title: 'Wing Placement and Positioning', path: '/design/wing-placement-and-positioning' },

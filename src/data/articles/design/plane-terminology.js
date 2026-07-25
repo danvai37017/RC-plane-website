@@ -4,7 +4,7 @@ export default {
   slug: 'plane-terminology',
   category: 'Design',
   tags: ['Basics'],
-  title: 'Plane Terminology',
+  title: 'Airplane Terminology',
   excerpt:
     'A glossary of the key terms every RC pilot and builder needs to know.',
   author: 'RC Team',
@@ -28,17 +28,15 @@ export default {
       level: 2,
       title: 'Airframe Terms',
       content: [
-        { type: 'p', text: '[Placeholder — to be written] Fuselage: the main body of the aircraft. Wing: the lifting surface. Empennage: the tail section including horizontal and vertical stabilizers. Control surfaces: ailerons, elevator, rudder, and flaps that steer the aircraft.' },
-        { type: 'img', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Aircraft_structures.svg/960px-Aircraft_structures.svg.png', caption: '[Placeholder image: labeled diagram of aircraft parts]' },
+        { type: 'img', src: '/images/plane-terminology.png', size: 'small' },
+        { type: 'p', text: 'Fuselage: the main body of the aircraft that holds everything together. It houses the battery, receiver, and sometimes the motor, while providing a mounting point for the wings and tail.' },
+        { type: 'p', text: 'Engine / Motor: The power behind the aircraft. In RC planes, this is usually an electric brushless motor (or a glow/gas engine) that spins the propeller to produce thrust.' },
+        { type: 'p', text: 'Propeller:  the spinning blade that converts the motor\'s power into forward thrust. The size and pitch of the prop determine how much thrust and speed your plane produces.' },
+        { type: 'p', text: 'Empennage: the tail section of the plane. It keeps the aircraft stable in flight and is made up of the vertical stabilizer (the upright fin that controls yaw) and the horizontal stabilizer (the flat surface that controls pitch).' },
+        { type: 'p', text: 'Wing: the lifting surface that generates the lift needed to fly. Wings come in many shapes and sizes, and often include struts — external braces that run from the wing to the fuselage to add structural support, especially on high wing and Cessna style planes.' },
+        { type: 'p', text: 'Landing Gear: the wheels and structure that support the plane on the ground during takeoff, landing, and taxiing. Common configurations include tricycle gear (nose wheel + two mains) and taildragger (two mains + a tail wheel).' },
       ],
     },
-    {
-      id: 'electronics-terms',
-      level: 3,
-      title: 'Electronics Terms',
-      content: [
-        { type: 'p', text: '[Placeholder — to be written] Kv: motor RPM per volt. ESC: Electronic Speed Controller. BEC: Battery Eliminator Circuit that powers the receiver. LiPo: Lithium Polymer battery. Servo: a small motor that moves control surfaces.' },
-      ],
-    },
+
   ],
 }
