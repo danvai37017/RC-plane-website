@@ -10,11 +10,11 @@ export default function Hero() {
         <div className={styles.textCol}>
           <span className={styles.pill}>RC AIRCRAFT KNOWLEDGE HUB</span>
           <h1 className={styles.headline}>
-            FLY.
-            <br />  
+            BUILD.
+            <br />
             LEARN.
             <br />
-            BUILD.
+            FLY.
           </h1>
           <p className={styles.subtitle}>
             Your complete resource for RC plane design, building, electronics, and
