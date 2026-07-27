@@ -16,14 +16,6 @@ export default {
     'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80',
   sections: [
     {
-      id: 'introduction',
-      level: 2,
-      title: 'Introduction',
-      content: [
-        { type: 'p', text: '[Placeholder — to be written] Every hobby has its own language, and RC aviation is no exception. This glossary covers the most important terms you will encounter as you design, build, and fly RC aircraft.' },
-      ],
-    },
-    {
       id: 'airframe-terms',
       level: 2,
       title: 'Airframe Terms',

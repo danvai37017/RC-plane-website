@@ -14,20 +14,16 @@ export const topicDropdowns = {
       { title: 'Aerodynamic Principles for Beginners', path: '/design/aerodynamic-principles-for-beginners' },
       { title: 'Choosing an Airfoil', path: '/design/choosing-the-right-airfoil' },
       { title: 'Wing Placement and Positioning', path: '/design/wing-placement-and-positioning' },
-      { title: 'CG & Balance', path: '/design/cg-balance' },
       { title: 'Wing Design', path: '/design/wing-design' },
-      { title: 'Fuselage Layout', path: '/design/fuselage-layout' },
-      { title: 'Tail Sizing', path: '/design/tail-sizing' },
       { title: 'Adverse Yaw', path: '/design/adverse-yaw' },
+      { title: 'Airframe Design', path: '/design/airframe-design' },
     ],
   },
   electronics: {
     items: [
-      { title: 'Choosing a Motor', path: '/electronics/choosing-a-motor' },
-      { title: 'Motor Kv Ratings', path: '/electronics/motor-kv-ratings' },
+      { title: 'Motor and KV Ratings', path: '/electronics/choosing-a-motor' },
       { title: 'Understanding ESCs', path: '/electronics/understanding-escs' },
       { title: 'Battery Selection', path: '/electronics/battery-selection' },
-      { title: 'Wiring Basics', path: '/electronics/wiring-basics' },
       { title: 'Voltage & Current', path: '/electronics/voltage-current' },
       { title: 'Propeller Matching', path: '/electronics/propeller-matching' },
       { title: 'Servo Basics', path: '/electronics/servo-basics' },
@@ -55,13 +51,10 @@ export const topicDropdowns = {
   },
   resources: {
     items: [
-      { title: 'Ultimate Resource Guide', path: '/resources/ultimate-resource-guide-for-rc-pilots' },
       { title: 'Plan Libraries', path: '/resources/plan-libraries' },
       { title: 'Airfoil Databases', path: '/resources/airfoil-databases' },
       { title: 'Software Tools', path: '/resources/software-tools' },
       { title: 'Forums & Groups', path: '/resources/forums-groups' },
-      { title: 'Events Calendar', path: '/resources/events-calendar' },
-      { title: 'Club Directory', path: '/resources/club-directory' },
     ],
   },
   troubleshooting: {

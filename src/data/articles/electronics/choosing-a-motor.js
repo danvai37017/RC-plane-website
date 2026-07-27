@@ -4,7 +4,7 @@ export default {
   slug: 'choosing-a-motor',
   category: 'Electronics',
   tags: ['Motors'],
-  title: 'Choosing a Motor',
+  title: 'Motor and KV Ratings',
   excerpt:
     'Match motor size, Kv, and mount type to your airframe so you get the thrust you need without overheating.',
   author: 'RC Team',
@@ -33,11 +33,14 @@ export default {
       ],
     },
     {
-      id: 'kv-rating',
-      level: 3,
-      title: 'Understanding Kv Ratings',
+      id: 'what-kv-means',
+      level: 2,
+      title: 'What Kv Actually Means',
       content: [
-        { type: 'p', text: '[Placeholder — to be written] Kv stands for RPM per volt. A 1000 Kv motor running on an 11.1V (3S) battery will spin at approximately 11,100 RPM under no load. Lower Kv motors spin larger props at lower speeds; higher Kv motors spin smaller props at higher speeds.' },
+        { type: 'p', text: 'Kv stands for "RPM per volt". A motor rated at 1000 Kv will spin at 1000 RPM for every volt applied, assuming no load. Under load, the actual RPM will be lower.' },
+        { type: 'img', src: 'https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=900&q=80', caption: '[Placeholder image: motor Kv comparison chart]' },
+        { type: 'p', text: 'A 1000 Kv motor running on an 11.1V (3S) battery will spin at approximately 11,100 RPM under no load. Lower Kv motors spin larger props at lower speeds; higher Kv motors spin smaller props at higher speeds.' },
+        { type: 'p', text: 'Kv rating is one of the most misunderstood specifications in RC electronics. Matching Kv to your prop and battery voltage is critical for efficient, reliable performance.' },
       ],
     },
   ],
