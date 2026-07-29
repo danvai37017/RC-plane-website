@@ -1,4 +1,3 @@
-// Draft — placeholder sections added. Replace content with real text and images.
 export default {
   topic: 'design',
   slug: 'wing-design',
@@ -20,7 +19,22 @@ export default {
       level: 2,
       title: 'Introduction',
       content: [
-        { type: 'p', text: '[Placeholder — to be written] Wing planform is the shape of the wing when viewed from directly above or below — the wing\'s outline in top-down view. The planform choice dramatically affects stall behavior, roll rate, drag, and build complexity.' },
+        {
+          type: 'p',
+          text: 'The wing is one of the most important parts of an RC airplane. The design of it greatly determines how much lift the aircraft is able to produce, the stability, and the efficiency during flight.',
+        },
+        {
+          type: 'p',
+          text: 'The biggest design decision goes down to the wing planform, or the shape of the wing when viewed from above. Different planforms influence how the airplane handles things in the air.',
+        },
+        {
+          type: 'p',
+          text: 'Wing placement is also important. Moving the wing forward or backward changes the aircraft\'s stability and how responsive the elevator feels.',
+        },
+        {
+          type: 'p',
+          text: 'The sections below explain the most common wing planforms and how wing design affects your aircraft\'s performance.',
+        },
       ],
     },
     {
@@ -28,12 +42,31 @@ export default {
       level: 2,
       title: 'Types of Wing Planforms',
       content: [
-        { type: 'p', text: '[Placeholder — to be written] Rectangular: constant chord from root to tip. Simplest to build, predictable stall (root stalls first), best for trainers.' },
-        { type: 'p', text: '[Placeholder — to be written] Tapered: chord decreases toward the tip. Reduces drag and looks more scale, but can stall at the tip first unless washout is added.' },
-        { type: 'p', text: '[Placeholder — to be written] Elliptical: the most aerodynamically efficient planform with minimal induced drag. Very difficult to build — famously used on the Supermarine Spitfire.' },
-        { type: 'p', text: '[Placeholder — to be written] Delta: triangular shape with swept leading edges. Common on high-speed jets, good at high angle of attack but high drag at low speeds.' },
-        { type: 'p', text: '[Placeholder — to be written] Swept: wings angle backward. Used for high-speed stability; requires washout to avoid dangerous tip stalls.' },
-        { type: 'img', src: 'https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=900&q=80', caption: '[Placeholder image: comparison of rectangular, tapered, elliptical, delta, and swept planforms]' },
+        {
+          type: 'p',
+          text: 'Rectangular wings are the simplest to build and are commonly used on trainers. They are approachable, predictable, and easy to construct from foam board.',
+        },
+        {
+          type: 'p',
+          text: 'Tapered wings reduce drag and improve efficiency, but they are more difficult to build and can be less forgiving during stalls.',
+        },
+        {
+          type: 'p',
+          text: 'Elliptical wings provide excellent aerodynamic efficiency with very low drag. However, their complex shape makes them hard to approach for most foam board RC aircraft.',
+        },
+        {
+          type: 'p',
+          text: 'Swept wings are designed for high-speed flight and are commonly found in jet aircraft. At typical RC speeds, they provide few aerodynamic benefits and create more difficulties when it comes to manufacturing.',
+        },
+        {
+          type: 'p',
+          text: 'For the sake of simplicity, most foam board RC airplanes use rectangular or slightly swept wings. These shapes are easy to measure, cut, and assemble while still providing proper stability during flight.',
+        },
+        {
+          type: 'img',
+          src: 'https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=900&q=80',
+          caption: 'Comparison of common wing planforms used in RC aircraft.',
+        },
       ],
     },
     {
@@ -41,7 +74,22 @@ export default {
       level: 3,
       title: 'Aspect Ratio and Performance',
       content: [
-        { type: 'p', text: '[Placeholder — to be written] Aspect ratio = span ÷ average chord. High aspect ratio wings (long and narrow) are efficient for gliding but less maneuverable. Low aspect ratio wings (short and wide) are agile but produce more induced drag. Most RC trainers have an aspect ratio between 5:1 and 7:1.' },
+        {
+          type: 'p',
+          text: 'A wing\'s aspect ratio is the comparison between its wingspan to its chord. Long, narrow wings are more efficient and glide better, while shorter, wider wings are stronger and roll more quickly.',
+        },
+        {
+          type: 'p',
+          text: 'Wing placement also affects how the aircraft pitches. A wing mounted farther forward makes the airplane more stable and reduces elevator sensitivity.',
+        },
+        {
+          type: 'p',
+          text: 'Moving the wing farther back increases elevator responsiveness and maneuverability, but it also makes the aircraft less stable and more difficult to fly.',
+        },
+        {
+          type: 'p',
+          text: 'For most RC airplanes, placing the center of gravity around 25–33% of the wing chord behind the leading edge provides a good balance between stability and control.',
+        },
       ],
     },
   ],
