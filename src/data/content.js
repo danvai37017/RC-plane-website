@@ -22,10 +22,10 @@ export const topicDropdowns = {
   electronics: {
     items: [
       { title: 'Motor and KV Ratings', path: '/electronics/choosing-a-motor' },
-      { title: 'Understanding ESCs', path: '/electronics/understanding-escs' },
-      { title: 'Battery Selection', path: '/electronics/battery-selection' },
-      { title: 'Voltage & Current', path: '/electronics/voltage-current' },
       { title: 'Propeller Matching', path: '/electronics/propeller-matching' },
+      { title: 'Voltage & Current', path: '/electronics/voltage-current' },
+      { title: 'Battery Selection', path: '/electronics/battery-selection' },
+      { title: 'Understanding ESCs', path: '/electronics/understanding-escs' },
       { title: 'Servo Basics', path: '/electronics/servo-basics' },
     ],
   },
@@ -33,7 +33,6 @@ export const topicDropdowns = {
     items: [
       { title: 'Wind Simulator', path: '/wind-simulator' },
       { title: 'Wing Loading', path: '/tools/wing-loading' },
-      { title: 'Propeller Pitch', path: '/tools/propeller-pitch' },
       { title: 'Material Properties', path: '/tools/material-properties' },
       { title: 'Conversion Charts', path: '/tools/conversion-charts' },
       { title: 'Formulas', path: '/tools/formulas' },
