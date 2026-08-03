@@ -42,6 +42,14 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  /* The nav header's height tracks scroll position continuously (see
+     Navigation.jsx). Scroll anchoring "corrects" for that by adjusting
+     scrollTop to compensate whenever content above the viewport resizes,
+     which cancels the shrink a frame after every scroll and snaps the page
+     back to the top. Setting overflow-anchor: none on the header alone
+     isn't enough — the browser can still pick an anchor node elsewhere in
+     the document — so it's disabled document-wide. */
+  overflow-anchor: none;
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.5;

@@ -1,12 +1,76 @@
+/* display: contents so this wrapper (needed only so a single ref can bound
+   the arrow + header + dropdown together for the mouse-leave detection
+   below) doesn't generate its own box. Without this it becomes the sticky
+   header's containing block, and since it auto-sizes to exactly the
+   header's own (shrinking) height, there's never any slack for sticky to
+   hold onto — the header would just scroll away immediately instead of
+   sticking. display: contents makes .page-shell (100vh) the effective
+   containing block again, same as before this wrapper existed. */
+.navShell {
+  display: contents;
+}
+
+.arrowButton {
+  position: fixed;
+  left: 16px;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 0 0 7px 7px;
+  background: #0d1b2a;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(4, 15, 30, 0.28);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.arrowButton:hover {
+  background: #14304d;
+  color: var(--color-white);
+}
+
+.arrowButton:disabled {
+  cursor: default;
+}
+
+.arrowIcon {
+  transition: transform var(--transition-normal);
+}
+
+.arrowIconOpen {
+  transform: rotate(180deg);
+}
+
+/* position: sticky (not fixed) so the header stays part of the document
+   flow — its own box height is what's reclaimed as it shrinks, instead of
+   a fixed spacer standing in for it and leaving a gap behind. Height and
+   its transition are driven from JS (Navigation.jsx), since they track
+   scroll position continuously rather than toggling between two states. */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 100;
+  /* Otherwise the browser's scroll-anchoring heuristic "corrects" for the
+     header's own height changing above the viewport by adjusting scrollTop
+     to compensate — which exactly cancels the scroll-driven shrink this
+     component depends on, snapping the page back to the top a frame after
+     every scroll. The shrink IS the intended effect, not a shift to anchor
+     against. */
+  overflow-anchor: none;
   background: #0d1b2a;
   color: var(--color-white);
-  height: 90px;
 }
 
+/* Fixed at the full nav height regardless of .topbar's current (possibly
+   shrunk) height, and never clipped by it — overflow: hidden on .topbar
+   would also clip the dropdown panels, which are meant to extend below it.
+   Its own opacity (set inline, tracking the same shrink ratio) is what
+   makes it read as "collapsing" instead of just overflowing the shrunk bar. */
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
@@ -14,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  height: 90px;
 }
 
 .brand {
@@ -250,7 +314,7 @@
 }
 
 @media (max-width: 720px) {
-  .topbar {
+  .inner {
     height: 72px;
   }
 }

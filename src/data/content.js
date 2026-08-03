@@ -31,6 +31,7 @@ export const topicDropdowns = {
   },
   tools: {
     items: [
+      { title: 'Wind Simulator', path: '/wind-simulator' },
       { title: 'Wing Loading', path: '/tools/wing-loading' },
       { title: 'Propeller Pitch', path: '/tools/propeller-pitch' },
       { title: 'Material Properties', path: '/tools/material-properties' },
@@ -51,6 +52,7 @@ export const topicDropdowns = {
   },
   resources: {
     items: [
+      { title: 'About Us', path: '/resources/about-us' },
       { title: 'Plan Libraries', path: '/resources/plan-libraries' },
       { title: 'Airfoil Databases', path: '/resources/airfoil-databases' },
       { title: 'Software Tools', path: '/resources/software-tools' },

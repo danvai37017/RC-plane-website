@@ -1,0 +1,118 @@
+.section {
+  padding-top: 8px;
+}
+
+/* --- Header (matches the accent + kicker label pattern used across the site) --- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.accent {
+  width: 4px;
+  height: 24px;
+  background: var(--color-blue-600);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+/* --- Team ------------------------------------------------------------------ */
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar {
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.role {
+  margin: 18px 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  line-height: 1.6;
+}
+
+.roleSecondary {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-gray-500);
+  line-height: 1.6;
+}
+
+/* --- Our Story --------------------------------------------------------------- */
+
+.story {
+  margin-top: 56px;
+  text-align: center;
+}
+
+.storyTitle {
+  margin: 0 0 16px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+.storyText {
+  margin: 0 auto;
+  max-width: 640px;
+  color: var(--color-gray-600);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- Responsive --------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .section {
+    margin-top: 56px;
+    padding-top: 40px;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 280px;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .storyTitle {
+    font-size: 1.6rem;
+  }
+}
