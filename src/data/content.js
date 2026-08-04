@@ -51,6 +51,7 @@ export const topicDropdowns = {
   },
   resources: {
     items: [
+      { title: 'Learning Channels', path: '/resources/learning-channels-links' },
       { title: 'About Us', path: '/resources/about-us' },
       { title: 'Plan Libraries', path: '/resources/plan-libraries' },
       { title: 'Airfoil Databases', path: '/resources/airfoil-databases' },

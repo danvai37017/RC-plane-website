@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Clock, Calendar, User, ArrowUp, Download, ChevronLeft, ChevronRight, Lightbulb, AlertTriangle, Info, FileText } from 'lucide-react'
+import { Clock, Calendar, User, ArrowUp, Download, ChevronLeft, ChevronRight, Lightbulb, AlertTriangle, Info, FileText, ExternalLink } from 'lucide-react'
 import { navLinks } from '../data/content'
 import { getArticle, getRelatedArticles, isPublished } from '../data/articles'
 import styles from './ArticlePage.module.css'
@@ -88,6 +88,30 @@ function ArticleSectionRenderer({ section }) {
           }
           case 'bullet':
             return null
+          case 'ul':
+          case 'ol':
+            return (
+              <ul key={i} className={styles.resourceList}>
+                {(block.items || []).map((item, j) => (
+                  <li key={j} className={styles.resourceItem}>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        className={styles.resourceLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink size={15} strokeWidth={2} className={styles.resourceLinkIcon} />
+                        {item.title}
+                      </a>
+                    ) : (
+                      <span className={styles.resourceTitle}>{item.title}</span>
+                    )}
+                    {item.text && <p className={styles.resourceText}>{item.text}</p>}
+                  </li>
+                ))}
+              </ul>
+            )
           default:
             return null
         }
