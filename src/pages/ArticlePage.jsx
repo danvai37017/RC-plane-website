@@ -7,6 +7,63 @@ import styles from './ArticlePage.module.css'
 
 const calloutIcons = { tip: Lightbulb, warning: AlertTriangle, info: Info }
 
+// Inline hoverable term: shows a definition box beside the word on hover/focus.
+// Position is computed from the trigger's actual on-screen rect so the box
+// flips to whichever side has room, instead of running off the viewport edge.
+function DefinedTerm({ term, definition }) {
+  const ref = useRef(null)
+  const [popup, setPopup] = useState(null)
+
+  function show() {
+    const el = ref.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const width = 280
+    const gap = 10
+    const margin = 12
+    const estHeight = 110
+
+    const left = rect.right + gap + width + margin <= window.innerWidth
+      ? rect.right + gap
+      : Math.max(margin, rect.left - gap - width)
+
+    const top = Math.min(
+      Math.max(margin, rect.top + rect.height / 2 - estHeight / 2),
+      window.innerHeight - estHeight - margin
+    )
+
+    setPopup({ left, top, width })
+  }
+
+  function hide() {
+    setPopup(null)
+  }
+
+  return (
+    <span
+      ref={ref}
+      className={styles.term}
+      tabIndex={0}
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+    >
+      {term}
+      {popup && (
+        <span
+          className={styles.termPopup}
+          style={{ left: popup.left, top: popup.top, width: popup.width }}
+          role="tooltip"
+        >
+          <span className={styles.termPopupWord}>{term}</span>
+          <span className={styles.termPopupDef}>{definition}</span>
+        </span>
+      )}
+    </span>
+  )
+}
+
 function ArticleSectionRenderer({ section }) {
   if (section.type === 'takeaways') {
     return (
@@ -32,7 +89,17 @@ function ArticleSectionRenderer({ section }) {
       {section.content && section.content.map((block, i) => {
         switch (block.type) {
           case 'p':
-            return <p key={i} className={styles.body}>{block.text}</p>
+            return (
+              <p key={i} className={styles.body}>
+                {block.parts
+                  ? block.parts.map((part, j) =>
+                      typeof part === 'string'
+                        ? <span key={j}>{part}</span>
+                        : <DefinedTerm key={j} term={part.term} definition={part.definition} />
+                    )
+                  : block.text}
+              </p>
+            )
           case 'img':
           case 'image':
             return (

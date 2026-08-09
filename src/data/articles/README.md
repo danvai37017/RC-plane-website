@@ -96,6 +96,7 @@ normal heading):
 | Block | Shape | Renders as |
 |---|---|---|
 | Paragraph | `{ type: 'p', text: '…' }` | `<p>` body text |
+| Paragraph w/ hover terms | `{ type: 'p', parts: ['text', { term: 'ESC', definition: '…' }, 'more text'] }` | `<p>` where each `{ term, definition }` entry renders as a light-blue underlined word; hovering/focusing it pops a small definition box beside it (auto-flips left/right/vertically to stay on screen). Use `parts` instead of `text` only when the paragraph needs inline hover terms — mix plain strings and `{ term, definition }` objects in order. |
 | Image | `{ type: 'img', src: '…', caption: '…', size: 'small' }` | figure + caption. `src` may be an external URL or a `/images/…` path in `public/`. `size` and `width` optional. |
 | Table | `{ type: 'table', headers: [...], rows: [[...], [...]] }` | HTML table |
 | Callout | `{ type: 'callout', variant: 'info', title: '…', text: '…' }` | colored box. `variant`: `info`, `warning`, or `tip` |
@@ -109,7 +110,7 @@ For a complete, real example, read
 
 When converting a written doc, map it like this:
 
-- **Doc title** → `title` (+ a short `breadcrumb` last entry).
+- **Doc title** → `title`.
 - **Intro "key points" / summary list** → a `takeaways` section (bullets).
 - **`##` / major headings** → a section with `level: 2`.
 - **`###` / sub-headings** → a section with `level: 3`.
