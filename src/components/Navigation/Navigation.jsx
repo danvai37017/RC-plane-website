@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { Plane, Search, ChevronDown, ArrowRight } from 'lucide-react'
 import { navLinks, topicDropdowns } from '../../data/content'
@@ -28,6 +28,7 @@ function computeBaseHeight(scrollY, navHeight) {
 
 export default function Navigation() {
   const { pathname } = useLocation()
+  const isArticlePage = pathname.split('/').length > 2
   const [openDropdown, setOpenDropdown] = useState(null)
   const [activeDropdown, setActiveDropdown] = useState(null)
 
@@ -53,6 +54,14 @@ export default function Navigation() {
   const baseHeightRef = useRef(baseHeight)
   const openSourceRef = useRef(openSource)
   const transitioningRef = useRef(transitioning)
+  const isArticlePageRef = useRef(isArticlePage)
+  // Article pages collapse based on accumulated scroll *delta* rather than
+  // absolute scroll position (see the main scroll effect below), so a
+  // reveal-on-scroll-up doesn't require scrolling all the way back to the
+  // top of a long article. scrollOffsetRef is that accumulator; lastScrollYRef
+  // is what each new scroll event diffs against to get the delta.
+  const scrollOffsetRef = useRef(0)
+  const lastScrollYRef = useRef(0)
 
   useEffect(() => {
     navHeightRef.current = navHeight
@@ -66,6 +75,9 @@ export default function Navigation() {
   useEffect(() => {
     transitioningRef.current = transitioning
   }, [transitioning])
+  useEffect(() => {
+    isArticlePageRef.current = isArticlePage
+  }, [isArticlePage])
 
   function clearCloseTimeout() {
     if (closeTimeoutRef.current) {
@@ -110,27 +122,8 @@ export default function Navigation() {
     beginTransition()
   }
 
-  function handleArrowClick() {
-    if (transitioningRef.current) return
-    // A mouse click on the arrow is always preceded by the mouseenter that
-    // opens it as a hover peek, so by the time the click itself lands, the
-    // bar is already at full height with source 'hover'. Treat that as
-    // pinning it open (matching the intent of the click) rather than
-    // immediately releasing what the same gesture just opened.
-    if (openSourceRef.current === 'hover') {
-      setOpenSource('click')
-      return
-    }
-    if (openSourceRef.current === 'click') {
-      releaseOverride()
-      return
-    }
-    openWith('click')
-  }
-
-  // Hovering the strip/header or the arrow opens the bar the same way
-  // clicking does, but the resulting open state is a "peek": it reverts to
-  // baseHeight once the pointer leaves, instead of staying pinned.
+  // Hovering the strip/header or the arrow opens the bar as a "peek": it
+  // reverts to baseHeight once the pointer leaves, instead of staying open.
   function handleHoverOpen() {
     if (baseHeightRef.current < navHeightRef.current) openWith('hover')
   }
@@ -180,15 +173,49 @@ export default function Navigation() {
     }
   }, [openSource])
 
-  // The header's height tracks scroll position directly and continuously:
-  // full at the top of the page, shrinking 1:1 down to the strip over the
-  // next (navHeight - STRIP_HEIGHT) pixels of scroll, then staying there
-  // until hovered or clicked open. Once scrolled back up to where the
-  // natural height is full again, any hover/click override is stale and
-  // cleared so a later scroll-down starts fresh.
+  // Resets tracking to whatever the natural, absolute-scroll-position-based
+  // height would be — used on mount, on route changes, and on resize, all of
+  // which should start from a clean slate rather than carrying over
+  // leftover delta state from wherever the page/breakpoint was before.
+  function resyncToScrollPosition(navH) {
+    const h = computeBaseHeight(window.scrollY, navH)
+    scrollOffsetRef.current = navH - h
+    lastScrollYRef.current = window.scrollY
+    baseHeightRef.current = h
+    setBaseHeight(h)
+  }
+
+  // The header's height tracks scroll continuously. On most pages it's tied
+  // to absolute scroll position: full at the top of the page, shrinking 1:1
+  // down to the strip over the next (navHeight - STRIP_HEIGHT) pixels of
+  // scroll, then staying there — so it only re-expands once scrolled back up
+  // near the actual top. On article pages it instead tracks accumulated
+  // scroll *delta*: scrolling up by (navHeight - STRIP_HEIGHT) px fully
+  // re-expands it no matter how deep into the article that happens, and
+  // scrolling back down recollapses it the same way — since long articles
+  // make "scroll all the way back to the top" too costly for a quick peek
+  // at the nav. Once scrolled back up to where the height is full again
+  // (either mode), any hover/click override is stale and cleared so a later
+  // scroll-down starts fresh.
   useEffect(() => {
     function onScroll() {
-      const h = computeBaseHeight(window.scrollY, navHeightRef.current)
+      const scrollY = window.scrollY
+      let h
+      if (isArticlePageRef.current) {
+        if (scrollY <= 0) {
+          scrollOffsetRef.current = 0
+        } else {
+          const delta = scrollY - lastScrollYRef.current
+          scrollOffsetRef.current = Math.min(
+            navHeightRef.current - STRIP_HEIGHT,
+            Math.max(0, scrollOffsetRef.current + delta)
+          )
+        }
+        h = navHeightRef.current - scrollOffsetRef.current
+      } else {
+        h = computeBaseHeight(scrollY, navHeightRef.current)
+      }
+      lastScrollYRef.current = scrollY
       baseHeightRef.current = h
       setBaseHeight(h)
       if (h >= navHeightRef.current && openSourceRef.current) {
@@ -200,15 +227,19 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // A new route starts from a clean slate rather than carrying over
+  // whatever delta accumulator the previous page had built up.
+  useEffect(() => {
+    resyncToScrollPosition(navHeightRef.current)
+  }, [pathname])
+
   useEffect(() => {
     function onResize() {
       const nh = getNavHeight()
       if (nh === navHeightRef.current) return
       navHeightRef.current = nh
       setNavHeight(nh)
-      const h = computeBaseHeight(window.scrollY, nh)
-      baseHeightRef.current = h
-      setBaseHeight(h)
+      resyncToScrollPosition(nh)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -253,7 +284,6 @@ export default function Navigation() {
   }, [])
 
   const topic = pathname.split('/')[1]
-  const isArticlePage = pathname.split('/').length > 2
 
   const displayHeight = openSource ? navHeight : baseHeight
   const isOpen = displayHeight >= navHeight
@@ -261,25 +291,33 @@ export default function Navigation() {
   const contentOpacity = Math.max(0, Math.min(1, (displayHeight - STRIP_HEIGHT) / (navHeight - STRIP_HEIGHT)))
   const heightTransition = transitioning ? `height ${TRANSITION_MS}ms ease` : 'none'
 
+  // Published as CSS vars so other, unrelated pieces of the page (the
+  // article reading-progress bar) can stay flush against the header's
+  // bottom edge without needing a shared React state/context. Layout
+  // effect (not a regular effect) so this commits in the same paint as
+  // .topbar's own inline height style below — otherwise the two lag by one
+  // effect-flush during eased hover transitions and visibly drift apart
+  // for a frame or two mid-animation.
+  useLayoutEffect(() => {
+    document.documentElement.style.setProperty('--nav-height', `${displayHeight}px`)
+    document.documentElement.style.setProperty('--nav-transition', transitioning ? `${TRANSITION_MS}ms` : '0ms')
+  }, [displayHeight, transitioning])
+
   return (
     <div className={styles.navShell} ref={shellRef}>
       {isShrinkable && (
-        <button
-          type="button"
+        <div
           className={styles.arrowButton}
           style={{ top: displayHeight, transition: transitioning ? `top ${TRANSITION_MS}ms ease` : 'none' }}
-          onClick={handleArrowClick}
           onMouseEnter={handleHoverOpen}
-          disabled={transitioning}
-          aria-label={isOpen ? 'Hide navigation' : 'Show navigation'}
-          aria-expanded={isOpen}
+          aria-hidden="true"
         >
           <ChevronDown
             size={16}
             strokeWidth={2.5}
             className={`${styles.arrowIcon} ${isOpen ? styles.arrowIconOpen : ''}`}
           />
-        </button>
+        </div>
       )}
 
       <header

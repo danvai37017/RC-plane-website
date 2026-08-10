@@ -24,7 +24,7 @@
   border-radius: 0 0 7px 7px;
   background: #0d1b2a;
   color: rgba(255, 255, 255, 0.85);
-  cursor: pointer;
+  cursor: default;
   box-shadow: 0 6px 14px rgba(4, 15, 30, 0.28);
   transition: background var(--transition-fast), color var(--transition-fast);
 }
@@ -32,10 +32,6 @@
 .arrowButton:hover {
   background: #14304d;
   color: var(--color-white);
-}
-
-.arrowButton:disabled {
-  cursor: default;
 }
 
 .arrowIcon {
